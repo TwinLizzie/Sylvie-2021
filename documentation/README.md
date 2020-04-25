@@ -48,6 +48,8 @@ In my opinion, we simply don't make enough use of randomness when it comes to bu
 
 I would go as far as to say that it is precisely our ability to make mistakes that makes us great. We wouldn't have modern medicine if it weren't for all those poor souls who have died from countless of plagues and pandemics. We wouldn't have democracy and civil rights if it weren't for those years and years of tyranny and slavery. Simply put: We know what to do, because we know what Not to do.
 
+### Isn't this just stating the obvious?
+
 But isn't that still the whole basis of reinforcement learning? Build as many different lightbulbs as possible, until one of them lights up? Yes, and that is why it is so effective. But as I said, reinforcement learning alone shouldn't be relied upon when building a human-like AI.
 
 A lot of what makes up human consciousness is disappointingly scripted. If I clap in front of your face, you will probably blink. If I hurl an insult at you, you will probably be offended IF there is any truth to it. None of these reactions are under our control. They are scripted. They are IF, Else statements within For and While loops. They don't require 'Free Will' or any serious weighing of positives and negatives.
