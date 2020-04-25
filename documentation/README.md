@@ -6,7 +6,7 @@ The reason I say 'human' consciousness, is that there's literally infinite possi
 
 ### How does Memory-Creation and Language lead to 'Human' Consciousness?
 
-When you look at a cup of coffee, what is the first thing that pops into your mind? "This is a **cup of coffee** (object), it is **sitting** (verb) on the table and it is probably **empty** (adjective)."
+When you look at a cup of coffee, what is the first thing that pops into your mind? "This is a **cup of coffee** (object), it is **sitting** (verb) on the table and it is probably **empty** (adjective). Is it a thread to my survival? No. Is it food? Yes. Is it alive? No."
 
 Congratulations! You just recorded an **event** into your short-term memory, in order to facilitate your goal of everyday survival and decision-making.
 
@@ -59,6 +59,14 @@ Once you get all of the scripted stuff out of the way, it becomes a lot easier t
 Simply put, there is no algorithm to building a human-like AI. It'll have to be painted inch after inch like ceiling of the Sistine Chapel. But having a map and a general layout of this megastructure would help.
 
 It also helps if your AI has a goals, as well as a meta-goal. The goal of every human being is to collect resources, save energy, etc. The meta-goal is to survive and reproduce. A humanoid robot AI might perhaps be more altruistic and self-sacrificing, or it could be individualistic and act out of self-preservation just like ourselves.
+
+### Most of what goes on inside of our minds is just pointless noise
+
+That's right. Most of what goes on in our minds is just.. chaos. Some of it just happens to increase our chances of reproducing and surviving.
+
+Once you filter out the noise, it becomes a lot easier to just isolate the elements of human consciousness that are any good, and then simply get rid of the rest. 
+
+Unless you want your robot to have dreams. But do we ever really enjoy listening to people talk about what they dreamed last night?
 
 ### Conclusion
 
