@@ -12,7 +12,7 @@ Congratulations! You just recorded an **event** into your short-term memory, in 
 
 I'd argue that one way we could make machines more conscious is to provide them with an event-recollection engine that interprets video footage, sound recordings, tactile sensations, etc. into every-day events that follow a timeline, and build an engine that translates all of this data into written language. 
 
-You're probably going to need a lot of storage for the video data (unless you store your footage in low resolution). Or, you could simply translate the bulk of those events into written language, and store it as text files, except for the more important events. Then you can have centuries worth of event-recollection!
+You're probably going to need a lot of storage for the video data (unless you store your footage in low resolution). Or, you could simply translate the bulk of those events into written language, and store it as text files, except for the more important events where photographic memory is vital. Then you can have centuries worth of event-recollection!
 
 ### Now, what about Pain and Pleasure? Don't they make us conscious as well?
 
