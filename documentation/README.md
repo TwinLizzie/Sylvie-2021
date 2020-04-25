@@ -62,7 +62,7 @@ It also helps if your AI has a goals, as well as a meta-goal. The goal of every 
 
 ### Most of what goes on inside of our minds is just pointless noise
 
-That's right. Most of what goes on in our minds is just.. chaos. Some of it just happens to increase our chances of reproducing and surviving.
+That's right. Most of what goes on in our minds is just.. chaos. Some of it just happens to increase our chances of reproducing and surviving. And some of it leads to self-sabotage.
 
 Once you filter out the noise, it becomes a lot easier to just isolate the elements of human consciousness that are any good, and then simply get rid of the rest. 
 
