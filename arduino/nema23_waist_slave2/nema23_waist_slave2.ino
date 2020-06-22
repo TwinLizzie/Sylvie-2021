@@ -4,7 +4,7 @@
 #include <AccelStepper.h>
 #include <Wire.h>
 
-int i2cAddress = 0x18;
+int i2cAddress = 0x10;
 
 // Stepper motor config
 int microstepRes = 4;

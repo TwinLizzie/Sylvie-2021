@@ -1,10 +1,10 @@
-// Slave code for Sylvie 2021 Robot Legs using Arduino Nano/Mini
-// This 2 pin code is configured for use with a Nema 23 Bipolar 1.8deg 1.16Nm (164.3oz.in) 1.5A 5.4V 57x57x56mm 4 Wires
+// Slave code for Sylvie 2021 Lower Body Sideways rocking Joints using Arduino Nano/Mini
+// This 2 pin code is configured for use with a Nema 17 Bipolar 1.8deg
 
 #include <AccelStepper.h>
 #include <Wire.h>
 
-int i2cAddress = 0x18;
+int i2cAddress = 0x11;
 
 // Stepper motor config
 int microstepRes = 4;
@@ -71,26 +71,26 @@ void loop(){
 
   if (wireState > 0) {
     if(wireState == 2000){
-      stepper_one.move(1 * ((((200 * 53.575757576) * 4) / 360) * 2));     
+      stepper_one.move(1 * (((((200 * 53.575757576) * 4) / 360) * 2) * 4.28));     
       currentAngle++;
       wireState = 0;  
     }
     else if(wireState == 2001){
-      stepper_one.move(-1 * ((((200 * 53.575757576) * 4) / 360) * 2)); 
+      stepper_one.move(-1 * (((((200 * 53.575757576) * 4) / 360) * 2) * 4.28)); 
       currentAngle--;
       wireState = 0;       
     }
     else if(wireState == 2002){
-      stepper_one.move(1 * ((((200 * 53.575757576) * 4) / 360) * 2));     
+      stepper_one.move(1 * (((((200 * 53.575757576) * 4) / 360) * 2) * 4.28));     
       wireState = 0;  
     }
     else if(wireState == 2003){
-      stepper_one.move(-1 * ((((200 * 53.575757576) * 4) / 360) * 2)); 
+      stepper_one.move(-1 * (((((200 * 53.575757576) * 4) / 360) * 2) * 4.28)); 
       wireState = 0;       
     }    
     else if(wireState > 0 && wireState < 2000){
       newAngle = (wireState - currentAngle);
-      stepper_one.move(newAngle * ((((20 * 53.575757576) * 4) / 360) * 2)); //Move X times revolutions, according to gear reduction ratio. 
+      stepper_one.move(newAngle * (((((20 * 53.575757576) * 4) / 360) * 2) * 4.28)); //Move X times revolutions, according to gear reduction ratio. 
       currentAngle = wireState; 
 
       wireState = 0;
