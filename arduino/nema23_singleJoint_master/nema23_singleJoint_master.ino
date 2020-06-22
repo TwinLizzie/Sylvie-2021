@@ -6,11 +6,11 @@
 
 int microstepRes = 4;
 
-int stepperSpeed = 800 * microstepRes; //maximum steps per second
-int motorAccel = 1800 * microstepRes; //steps/second/second to accelerate
+int stepperSpeed = 1200 * microstepRes; //maximum steps per second
+int motorAccel = 2400 * microstepRes; //steps/second/second to accelerate
 
-int gearReduction = 4.28;
-int stepsPerRev = 100; // e.g. one full revolution is 200 at 1.8deg. 100 for half. 50 for quarter.. etc.
+// int gearReduction = 53.575757576;
+// int stepsPerRev = 200; // e.g. one full revolution is 200 at 1.8deg. 100 for half. 50 for quarter.. etc.
 
 int resetPin = 5;
 int m2Pin = 6;
@@ -37,40 +37,23 @@ void setup(){
   //digitalWrite(resetPin, HIGH);
 }
 
-long stepperState = 0;
+int serialState = 0;
+int stepperState = 0;
 
 void loop(){
   digitalWrite(enablePin, HIGH);
   
   while (Serial.available() == 0) {}
-  stepperState = Serial.parseInt();
+  serialState = Serial.parseInt();
 
   Serial.print("Received command: ");
   Serial.println(stepperState); 
 
-  if(stepperState > 0) {
-    
-    if(stepperState == 2){
-        stepper_one.move((5 * 4.28 * microstepRes) / 2); //Move X times revolutions, according to gear reduction ratio.
+  if(serialState) {
+    if(serialState > 1000){
+      stepperState = serialState - 1000
+      stepper_one.moveTo(stepperState * ((((200 * 53.575757576) * 4) / 360) * 2)); //Move X times revolutions, according to gear reduction ratio.
     }
-    else if(stepperState == 3){    
-        stepper_one.move((-5 * 4.28 * microstepRes) / 2);                
-    }
-    else if(stepperState == 4){
-        stepper_one.move((15 * 4.28 * microstepRes) / 2);
-    }
-    else if(stepperState == 5){
-        stepper_one.move((-15 * 4.28 * microstepRes) / 2);
-    }
-    else if(stepperState == 6){
-        stepper_one.move((25 * 4.28 * microstepRes) / 2);
-    }
-    else if(stepperState == 7){
-        stepper_one.move((-25 * 4.28 * microstepRes) / 2);
-    }
-
-  //these must be called as often as possible to ensure smooth operation
-  //any delay will cause jerky motion
   }
   
   while (stepper_one.distanceToGo() != 0) {
