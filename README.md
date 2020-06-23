@@ -55,7 +55,7 @@ Sylvie is the Atari and Macintosh of Personal Companion Robots. 50 years from no
 
 If you wish to support my work and keep this project open source, please use this link:
 
-https://www.paypal.com/cgi-bin/webscr?cmd=_donations&business=denisefrom2018%40gmail.com&item_name=YouTube+Channel¤cy_code=USD&source=url
+https://www.paypal.com/cgi-bin/webscr?cmd=_donations&business=denisefrom2018%40gmail.com&item_name=Keep+Twin+Lizzie+Projects+Open+Source&currency_code=USD&source=url
 
 Note on donations benefits (updated June 2020):
 
