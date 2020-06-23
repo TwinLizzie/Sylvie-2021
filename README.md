@@ -1,5 +1,5 @@
 
-## Sylvie-2021 version: 0.90
+## Sylvie-2021 version: 1.00
 
 ### Introduction
 
@@ -50,3 +50,21 @@ Twin Lizzie (hopefully) will become a registered New Zealand robotics company.
 ### The Revolution
 
 Sylvie is the Atari and Macintosh of Personal Companion Robots. 50 years from now, she will be literally indistinguishable from a human being, and we're going to have a lot of problems if we don't get our ethics right starting from today.
+
+### Want to help out?
+
+If you wish to support my work and keep this project open source, please use this link:
+
+https://www.paypal.com/cgi-bin/webscr?cmd=_donations&business=denisefrom2018%40gmail.com&item_name=YouTube+Channel¤cy_code=USD&source=url
+
+Note on donations benefits (updated June 2020):
+
+Donating to the project helps keep it open source.. but as a bonus, ANY future purchase you make from the Twin Lizzie stores will have 50% of your donations discounted. 
+
+e.g. (if you donated a total of $200, you can get a $100 discount from a $2000 purchase).
+
+I will be opening a Tindie shop by the end of this year, and eventually selling full copies of Sylvie. So consider all of your donations to be a great investment!
+
+*Donation discounts do NOT cover shipping costs, as they're unpredictable due to COVID-19!*
+
+All else said, the best way to contribute is to build your own parts and remix away!
