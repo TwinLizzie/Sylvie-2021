@@ -28,7 +28,7 @@ We certainly don't want to be in the business of reducing bright young men into 
 
 Sylvie is thus not only a technological revolution, but a spiritual one as well. A video game isn't meant to be played in God Mode, but video games these days seem to be really good at 'fooling' the player into believing that they're skilled and awesome.. unlike more competitive ones like Dota 2 and Starcraft, where there's a lot less sympathy for people who truly Suck at the game.
 
-It's certainly a hard balance to strike, but we'll get there. Eventually.
+Life is a Game, but sometimes it can get so impossibly difficult, that you have no choice but to bail yourself out with a cheat code. We don't want that. But what you also don't want is a robot telling you every day that you're a Brilliant, Awesome, Talented, Special Snowflake and that everything you do is Genius. It's certainly a hard balance to strike, but we'll get there. Eventually.
 
 ### The Game Plan
 
