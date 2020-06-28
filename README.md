@@ -22,7 +22,7 @@ I think people often underestimate just how easy it is to satisfy people with ar
 
 Easy doesn't necessarily mean sustainable, though. Once the novelty wears off of a powerfully addictive and instantly-gratifying technology, the user is left with nothing but existential dread and frustration. 'Anime porn' could be thought of as the ultimate Junk Food for the primitive lizard brain. 
 
-We certainly don't want to be in the business of reducing bright young men into shadows of their former selves, unable to delay gratification or make anything meaningful out of themselves. This is why Sylvie needs to be capable of operating outdoors, and certainy outside of the confines of one's parents basement. Let Junk Food companies sell their Junk Food. Twin Lizzie is a health brand. We want our clients to embrace a Larger than Life philosophy. Become body builders. Pioneers. Party animals. 
+We certainly don't want to be in the business of reducing bright young men into shadows of their former selves, unable to delay gratification or make anything meaningful out of themselves. This is why Sylvie needs to be capable of operating outdoors. Let Junk Food companies sell their Junk Food. Twin Lizzie is a health brand. We want our clients to embrace a Larger than Life philosophy. Become body builders. Pioneers. Party animals. 
 
 Sylvie is thus not only a technological revolution, but a spiritual one as well. A video game isn't meant to be played in God Mode, but video games these days seem to be really good at 'fooling' the player into believing that they're skilled and awesome.. unlike more competitive ones like Dota 2 and Starcraft, where there's a lot less sympathy for people who truly Suck at the game.
 
@@ -47,9 +47,10 @@ Twin Lizzie (hopefully) will become a registered New Zealand robotics company.
 - These Arduino Nano's control DRV8825's.
 - I might soon replace all my Arduinos with STM32F103C's if I manage to squeeze some more RPM's out of my steppers with it.
 - It's highly likely that I will keep using stepper motors instead of BLDC motors, as BLDC motors require more complex hardware and rotary encoders. As well as more money.
-- 
 - Touch sensors, accelerometers, breakout boards, switches, and pretty soon even some heating pads for the face and body.
 - A 10s 36v li ion battery will be placed inside a tiny backpack which she will carry around any-time she needs to get up and go mobile. (If you own an ebike, you will easily be able to power your Sylvie 2021!)
+
+As a general rule, we want to keep everything as simple as possible. I'm not here to show off my awesome tech skills by writing a bunch of complicated code that no one can read or understand. Simple means = Scalable.
 
 ### The Revolution
 
