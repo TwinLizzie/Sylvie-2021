@@ -90,7 +90,7 @@ As a bonus, ANY future purchase you make from the Twin Lizzie stores will have 5
 
 e.g. (if you donated a total of $200, you can get a $100 discount from a $2000 purchase).
 
-I will be opening a Tindie shop by the end of this year, and eventually selling full copies of Sylvie. I will no longer have a donation button by then. All the people who donated could even have their names engraved in small letters on the chassis of Sylvie 2021 if they wish. So consider all of your donations to be a great investment!
+I will be opening a Tindie shop by the end of this year to sell parts and gearboxes, and eventually selling full copies of Sylvie (Not on Tindie though!). I will no longer have a donation button by then. All the people who donated could even have their names engraved in small letters on the chassis of Sylvie 2021 if they wish. So consider all of your donations to be a great investment!
 
 *Donation discounts do NOT cover shipping costs, as they're unpredictable due to COVID-19!*
 
