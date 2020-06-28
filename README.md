@@ -50,7 +50,7 @@ Twin Lizzie (hopefully) will become a registered New Zealand robotics company.
 - Touch sensors, accelerometers, breakout boards, switches, and pretty soon even some heating pads for the face and body.
 - A 10s 36v li ion battery will be placed inside a tiny backpack which she will carry around any-time she needs to get up and go mobile. (If you own an ebike, you will easily be able to power your Sylvie 2021!)
 
-As a general rule, we want to keep everything as simple as possible. I'm not here to show off my awesome tech skills by writing a bunch of complicated code that no one can read or understand. Simple means = Scalable.
+As a general rule, we want to keep everything as simple as possible. I'm not here to show off my awesome tech skills by writing a bunch of complicated code that no one can read or understand. Simple means = Scalable. Simple means = Efficient. Simple means = I can come back to my work 5 years later and still understand what the hell I just created.
 
 ### The Revolution
 
