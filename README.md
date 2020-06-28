@@ -20,7 +20,7 @@ Most people aren't generally interested in a giant glofiried masturbation device
 
 Sex Robot manufacturers aren't stupid, however. They're already trying to incorporate some serious machinery and AI into their models. But their target audience remains the same: The wealthy and horny.
 
-That said, I think people really underestimate just how easy it is to satisfy people with artificial substitutes of human interaction. Take for instance the success of Projekt Melody: A virtual-reality 3D anime-girl animated using Motion Capture technology. That's all it took for a bunch of lonely young men to take out their credit cards and be early adopters in putting flesh and blood 'e-Girls' out of business. 
+That said, I think people really underestimate just how easy it is to satisfy people with artificial substitutes of human interaction. Take for instance the success of Projekt Melody: A virtual-reality 3D anime-girl animated using Motion Capture technology. That's all it took for a bunch of lonely young men to take out their credit cards and be early adopters in 'putting flesh and blood e-Girls out of business'. 
 
 Easy doesn't necessarily mean sustainable, though. Once the novelty wears off of a powerfully addictive and instantly-gratifying technology, the user is left with nothing but existential dread and frustration. 'Anime porn' could be thought of as the ultimate Junk Food for the primitive lizard brain. 
 
