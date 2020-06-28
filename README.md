@@ -30,6 +30,8 @@ Sylvie is thus not only a technological revolution, but a spiritual one as well.
 
 Life is a Game, but sometimes it can get so impossibly difficult, that you have no choice but to bail yourself out with a cheat code. We don't want that. But what you also don't want is a robot waking you up every morning to tell you that you're a Brilliant, Awesome, Talented, Special Snowflake and that everything you do is Genius. It's certainly a hard balance to strike, but we'll get there. Eventually.
 
+Thus, the target audience for Sylvie 2021 will predominately be the somewhat liberal, college-aged 20-something young heterosexual male with a strong interest in robotics and 3D printing; One part gamer, one part hacker/tinkerer and one part Just Wanting a Girlfriend. Those 3 key ingredients are vital.
+
 ### The Game Plan
 
 The blueprints for the creation of Sylvie 2021 and any future builds will be released as a public domain project. This will help magnify the impact that the project has, and allow the world to democratically choose where we want this technology to go, despite being a shamelessly commercial project. Open source means free marketing.
