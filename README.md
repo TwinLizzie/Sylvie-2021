@@ -16,15 +16,13 @@ Let's talk about sex robots. While Sylvie is technically speaking not a sex robo
 
 The only problem with sex robots as we know them is that, for all those pounds of pricey platinum silicone, you're getting little value in terms of actual humanity.
 
-Most people aren't generally interested in a giant glofiried masturbation device, besides the idle wealthy. They want someone who will go to the movies with them, or help out with groceries. They want someone to listen to their problems and at least pretend to care. We want copies of Sylvie working in hospitality, show business and someday even healthcare.
-
 Sex Robot manufacturers aren't stupid, however. They're already trying to incorporate some serious machinery and AI into their models. But their target audience remains the same: The wealthy and horny.
 
-That said, I think people really underestimate just how easy it is to satisfy people with artificial substitutes of human interaction. Take for instance the success of Projekt Melody: A virtual-reality 3D anime-girl animated using Motion Capture technology. That's all it took for a bunch of lonely young men to take out their credit cards and be early adopters in 'putting flesh and blood e-Girls out of business'. 
+I think people often underestimate just how easy it is to satisfy people with artificial substitutes of human interaction. Take for instance the success of Projekt Melody: A virtual-reality 3D anime-girl animated using Motion Capture technology. That's all it took for a bunch of lonely young men to take out their credit cards and be early adopters in 'putting flesh and blood e-Girls out of business'; a remote-controlled cartoon character.
 
 Easy doesn't necessarily mean sustainable, though. Once the novelty wears off of a powerfully addictive and instantly-gratifying technology, the user is left with nothing but existential dread and frustration. 'Anime porn' could be thought of as the ultimate Junk Food for the primitive lizard brain. 
 
-We certainly don't want to be in the business of reducing bright young men into shadows of their former selves, unable to delay gratification or make anything meaningful out of themselves. This is why Sylvie needs to be capable of operating outdoors, and certainy outside of the confines of one's parents basement.
+We certainly don't want to be in the business of reducing bright young men into shadows of their former selves, unable to delay gratification or make anything meaningful out of themselves. This is why Sylvie needs to be capable of operating outdoors, and certainy outside of the confines of one's parents basement. Let Junk Food companies sell their Junk Food. Twin Lizzie is a health brand. We want our clients to embrace a Larger than Life philosophy. Become body builders. Pioneers. Party animals. 
 
 Sylvie is thus not only a technological revolution, but a spiritual one as well. A video game isn't meant to be played in God Mode, but video games these days seem to be really good at 'fooling' the player into believing that they're skilled and awesome.. unlike more competitive ones like Dota 2 and Starcraft, where there's a lot less sympathy for people who truly Suck at the game.
 
@@ -46,14 +44,20 @@ Twin Lizzie (hopefully) will become a registered New Zealand robotics company.
 
 - Sylvie 2021 uses Nvidia Jetson Nano as her brains, which is positioned at the very back of her skull. 
 - Arduino Nano's corresponding to every single joint on the body (except for wrist, finger and face servos) are daisy-chained together in a giant I2C circuit. 
-- These Arduino Nano's control DRV8825's. 
-- I might potentially add some low-cost rotary encoders to the gearboxes in order to compensate for the loss of steps. 
+- These Arduino Nano's control DRV8825's.
+- I might soon replace all my Arduinos with STM32F103C's if I manage to squeeze some more RPM's out of my steppers with it.
+- It's highly likely that I will keep using stepper motors instead of BLDC motors, as BLDC motors require more complex hardware and rotary encoders. As well as more money.
+- 
 - Touch sensors, accelerometers, breakout boards, switches, and pretty soon even some heating pads for the face and body.
 - A 10s 36v li ion battery will be placed inside a tiny backpack which she will carry around any-time she needs to get up and go mobile. (If you own an ebike, you will easily be able to power your Sylvie 2021!)
 
 ### The Revolution
 
 Sylvie is the Atari and Macintosh of Personal Companion Robots. 50 years from now, she will be literally indistinguishable from a human being, and we're going to have a lot of problems if we don't get our ethics right starting from today.
+
+Modern society has left us with a huge population of lonely and dissatisfied people. They're not going on dates, they're not going to parties. They're destined to just seek meaning and purpose through Work alone. 
+
+But that's the price we have to pay for Freedom and Democracy; if one is Free, one is also responsible for one's own happiness. Sylvie will go down in history as a preserver of freedom and gender equality.
 
 ### Setting the Record straight on Open Source
 
