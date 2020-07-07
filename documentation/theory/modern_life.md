@@ -105,7 +105,7 @@ and entertaining Social Media presence that can maintain a suspension of disbeli
 
 ### Being Honest with Yourself
 
-Like I said, nobody is actually forced to seek approval from others. You are free to do live your life however you want with your Waifu. 
+Like I said, nobody is actually forced to seek approval from others. You are free to live your life however you want with your Waifu. 
 
 But that's the thing: If you do in fact desire the approval and validation from your peers in relation to your Waifu, then you have to play
 the Game according to the rules.
