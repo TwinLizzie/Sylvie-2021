@@ -2,14 +2,17 @@
 
 So what could possibly make an android girlfriend believable to the people around you, besides a convincing human animatronic skin?
 
-We're already previously talked about Storyline Programs, but where to we even begin to write a good story? Is it even
+We've already previously talked about Storyline Programs, but where do we even begin to write a good story? Is it even
 the same as writing a novel or a screenplay for a movie?
 
 The number one thing to consider here is that there's more than one character in this 'movie' you're about to shoot, which is the life 
-that you and your robot companion will be living.
+that you and your robot companion will be living. And that character is You. We'll discuss this in the following sections shortly.
 
-The problem with Personal Assistant devices like Siri and Alexa is that they're practically indistinguishable from a search engine.
-People interact with them to find answers to questions, not to alleviate their own loneliness.
+The main problem with Personal Assistant devices like Siri and Alexa is that they're practically indistinguishable from a search engine.
+People interact with them to find answers to questions, not to alleviate their own loneliness. 
+
+One cannot, on a human level, relate to a simulated person that has hasn't gone through kindergarten, primary school, high school, and college 
+in order to acquire the perspectives, beliefs and life experiences that the average adult human being already possesses.
 
 Unfortunately, many creators of humanoid robots have taken similarly unimaginative approaches when it comes to programming
 their own robots. 
