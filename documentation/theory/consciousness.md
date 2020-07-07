@@ -68,9 +68,9 @@ A lot of what makes up human consciousness is disappointingly scripted. If I cla
 
 Once you get all of the scripted stuff out of the way, it becomes a lot easier to focus on the more flexible aspects of human consciousness.
 
-Simply put, there is no algorithm to building a human-like AI. It'll have to be painted inch after inch like ceiling of the Sistine Chapel. But having a map and a general layout of this megastructure would help.
+Simply put, there is no magic recipe to building a human-like AI. It'll have to be painted inch after inch like ceiling of the Sistine Chapel. But having a map and a general layout of this megastructure would help.
 
-It also helps if your AI has a goals, as well as a meta-goal. The goal of every human being is to collect resources, save energy, etc. The meta-goal is to survive and reproduce. A humanoid robot AI might perhaps be more altruistic and self-sacrificing, or it could be individualistic and act out of self-preservation just like ourselves.
+It also helps if your AI has a goal, as well as a meta-goal. The goal of every human being is to collect resources, save energy, etc. The meta-goal is to survive and reproduce. A humanoid robot AI might perhaps be more altruistic and self-sacrificing, or it could be individualistic and act out of self-preservation just like ourselves.
 
 ### Most of what goes on inside of our minds is analog noise
 
