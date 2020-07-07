@@ -14,7 +14,19 @@ Think about the advice that is usually given to us whenever we encounter emotion
 But is it really the case that we *need* language in order to create thought, or could it be that language itself *is* thought?
 What came first, [the chicken or the egg?](https://www.youtube.com/watch?v=_UqxSq19_Aw)
 
-What we can confidently say is that language is Logic. Language is Reality. It is Command. It is Statement. It is Code.
+What we can confidently say is that all human beings are born with a kind of 'natural', auto-generated language. "Goo goo, boo boo, 
+baa baa, maa maa".
+
+But the simplicity of this lanuguage seems to be directly correlated with the simplicity of our consciousness at any given age.
+The more complex our language, the better we can categorize and create patterns. Language seems to give us the infrastructure to 
+work with logic and concepts. 
+
+A baby doesn't contemplate the meaninglessness of existence. A baby doesn't wonder what events took place before its birth. 
+It's only until we start talking and socializing that these concepts seem to manifest.
+
+What we can also confidently say is that language is Logic. Language is Reality. It is Command. It is Statement. It is Code.
+
+It might not even matter if the egg came before the chicken, as long as the chicken is able to cross the road.
 
 ### Language as an Encoder of reality
 
