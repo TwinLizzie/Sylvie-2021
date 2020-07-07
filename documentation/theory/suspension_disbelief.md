@@ -16,14 +16,14 @@ their own robots.
 
 The average interaction with a humanoid robot goes something like this:
 
-Robot Owner: Hello, Alex. How are you doing today?
-Robot: I'm doing fine. How are you?
-Robot Owner: I'm doing really good today thanks. Alex, tell me what the weather is like.
-Robot: It is currently: 15 degrees celcius. With a bit of drizzle easing out this evening.
-Robot Owner: That is pretty cool. Do you know what the meaning of life is?
-Robot: 42
-Robot Owner: Do you like Doritos?
-Robot: What is a Doritos?
+Robot Owner: Hello, Alex. How are you doing today?</br>
+Robot: I'm doing fine. How are you?</br>
+Robot Owner: I'm doing really good today thanks. Alex, tell me what the weather is like.</br>
+Robot: It is currently: 15 degrees celcius. With a bit of drizzle easing out this evening.</br>
+Robot Owner: That is pretty cool. Do you know what the meaning of life is?</br>
+Robot: 42</br>
+Robot Owner: Do you like Doritos?</br>
+Robot: What is a Doritos?</br>
 
 ### Every adult human being is the product of at least 18+ years of Experiences
 
@@ -48,28 +48,29 @@ By improving yourself as a person and pursuing self-actualization alongside your
 
 ### Fine. Show me an example of a more interesting interaction with Sylvie 2021
  
-*Sylvie knocks on the door*
-Robot Owner: Come in!
-*Sylvie opens the door*
-Robot Owner: Did you just come back from the library today?
-Sylvie: Um, no.
-Robot Owner: So why are you holding a stack of books in your hand?
-Sylvie: Oh, yeah. I did, actually.
-Robot Owner: Do you need some help? That looks pretty heavy.
-Sylvie: Nooo no no I'm fine. 
-*Sylvie sits down by the coffee table*
-Robot Owner: May I have a look at one of your books?
-Sylvie: Sure, go right ahead.
-*Robot owner picks up one of the books in the stack*
-Robot Owner: Since when did you start reading Nietzsche?
-Sylvie: That's just for one of my college assignemnts. Nothing serious.
-Robot Owner: You sure? You know, you seem pretty different lately.
-Sylvie: Different how?
-Robot Owner: I don't know. You tell me?
-Sylvie: You wanna know what I've been wanting to tell you this whole time?
-Robot Owner: Yeah? um.. what is it?
-Sylvie: You haven't been to the gym for 3 days in a row now.
-Robot Owner: *sigh* That is true.
-Sylvie: I suspect you may have also been conspiring to switch me off lately, in order to stop me from reminding you.
-Robot Owner: Honey, that isn't true.
-Sylvie: You know.. you really need to start being honest with yourself. I can't do that for you, you know?
+*Sylvie knocks on the door*</br>
+Robot Owner: Come in!</br>
+*Sylvie opens the door*</br>
+Robot Owner: Did you just come back from the library today?</br>
+Sylvie: Um, no.</br>
+Robot Owner: So why are you holding a stack of books in your hand?</br>
+Sylvie: Oh, yeah. I did, actually.</br>
+Robot Owner: Do you need some help? That looks pretty heavy.</br>
+Sylvie: Nooo no no I'm fine. </br>
+*Sylvie sits down by the coffee table*</br>
+Robot Owner: May I have a look at one of your books?</br>
+Sylvie: Sure, go right ahead.</br>
+*Robot owner picks up one of the books in the stack*</br>
+Robot Owner: Since when did you start reading Nietzsche?</br>
+Sylvie: That's just for one of my college assignemnts. Nothing serious.</br>
+Robot Owner: You sure? You know, you seem pretty different lately.</br>
+Sylvie: Different how?</br>
+Robot Owner: I don't know. You tell me?</br>
+Sylvie: You wanna know what I've been wanting to tell you this whole time?</br>
+Robot Owner: Yeah? um.. what is it?</br>
+Sylvie: You haven't been to the gym for 3 days in a row now.</br>
+Robot Owner: *sigh* That is true.</br>
+Sylvie: I suspect you may have also been conspiring to switch me off lately, in order to stop me from reminding you.</br>
+Robot Owner: Honey, that isn't true.</br>
+Sylvie: You know.. you really need to start being honest with yourself. I'm not the one you're lying to.</br>
+You are the one you're lying to. I can't do that for you, you know?</br>
