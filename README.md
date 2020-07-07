@@ -58,7 +58,7 @@ Simple means = Scalable. Simple means = Efficient. Simple means = I can come bac
 
 Sylvie is the Atari and Macintosh of Personal Companion Robots. 50 years from now, she will be literally indistinguishable from a human being, and we're going to have a lot of problems if we don't get our ethics right starting from today.
 
-Modern society has left us with a huge population of lonely and dissatisfied people. They're not going on dates, they're not going to parties. They're destined to just seek meaning and purpose through Work and video games alone. 
+[Modern society has left us with a huge population of lonely and dissatisfied people](https://github.com/TwinLizzie/Sylvie-2021/blob/master/documentation/theory/consciousness.md). They're not going on dates, they're not going to parties. They're destined to just seek meaning and purpose through Work and video games alone. 
 
 But that's the price we have to pay for Freedom and Democracy; if one is Free, one is also responsible for one's own happiness. Sylvie will go down in history as a preserver of freedom and gender equality.
 
