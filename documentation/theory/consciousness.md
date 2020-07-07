@@ -11,11 +11,10 @@ Language could be thought of as a tool that we use in order to [transfer our own
 Think about the advice that is usually given to us whenever we encounter emotional difficulties, hardships and problems in our lives:
 "Talk to a friend" or "Find yourself a good therapist" or "Write down your feelings in a journal".
 
-But Is it really the case that we *need* language in order to create thoughts, or could it be that language itself *is* thought?
+But is it really the case that we *need* language in order to create thought, or could it be that language itself *is* thought?
 What came first, the chicken or the egg?
 
-Simply put, all that Language is, is just the expression of Logic. The expression of Reality. Commands. Statements.
-Language is Code.
+What we can confidently say is that language is Logic. Language is Reality. It is Command. It is Statement. It is Code.
 
 ### Language as an Encoder of reality
 
