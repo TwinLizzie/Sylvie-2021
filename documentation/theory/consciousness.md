@@ -12,7 +12,7 @@ Think about the advice that is usually given to us whenever we encounter emotion
 "Talk to a friend" or "Find yourself a good therapist" or "Write down your feelings in a journal".
 
 But is it really the case that we *need* language in order to create thought, or could it be that language itself *is* thought?
-What came first, the chicken or the egg?
+What came first, [the chicken or the egg?](https://www.youtube.com/watch?v=_UqxSq19_Aw)
 
 What we can confidently say is that language is Logic. Language is Reality. It is Command. It is Statement. It is Code.
 
