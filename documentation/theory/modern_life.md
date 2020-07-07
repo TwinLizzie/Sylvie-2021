@@ -43,7 +43,7 @@ in my opinion it is *virtually identical* to the former.
 
 The truth is, we will never personally know any of the Twitch and/or YouTube livestreamers who we pretend to be friends with.
 What we are in fact engaging with is a fictional character that we ourselves have made up in our heads. The persona of the Twitch
-streamer is a performance art, an exxageration or glamorization of their own daily lives; nothing more, nothing less. They would
+streamer is a performance art, an exageration or glamorization of their own daily lives; nothing more, nothing less. They would
 be a lot less interesting and engaging to us if this weren't the case.
 
 In fact, the entirety of Social Media, and the culture revolving around it, could be thought of as a performance art. A society
