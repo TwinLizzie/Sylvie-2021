@@ -85,6 +85,10 @@ Once you filter out the noise, it becomes a lot easier to just isolate the eleme
 
 Unless you want your robot to have dreams. But do we ever really enjoy listening to people talk about what they dreamed last night?
 
+### Which Sci-fi movie do you think gets Aritificial Intelligence right?
+
+In my opinion, the movie [Arrival](https://www.frontiersin.org/articles/10.3389/fpsyg.2015.01631/full). And it's actually about Aliens, not AI.
+
 ### Conclusion
 
 Let's finish this off with a few takeaways:
