@@ -6,7 +6,20 @@ The reason I say 'human' consciousness, is that there's literally infinite possi
 
 ### How does Memory-Creation and Language lead to 'Human' Consciousness?
 
-When you look at a cup of coffee, what is the first thing that pops into your mind? "This is a **cup of coffee** (object), it is **sitting** (verb) on the table and it is probably **empty** (adjective). Is it a thread to my survival? No. Is it food? Yes. Is it alive? No."
+Language could be thought of as a tool that we use in order to transfer our own reality onto the minds of others, but it also seems to be an ingredient that makes up actual *thought*.
+
+Think about the advice that is usually given to us whenever we encounter emotional difficulties, hardships and problems in our lives:
+"Talk to a friend" or "Find yourself a good therapist" or "Write down your feelings in a journal".
+
+But Is it really the case that we *need* language in order to create thoughts, or could it be that language itself *is* thought?
+What came first, the chicken or the egg?
+
+Simply put, all that Language is, is just the expression of Logic. The expression of Reality. Commands. Statements.
+Language is Code.
+
+### Language as an Encoder of reality
+
+When you look at a cup of coffee, what is the first thing that pops into your mind? "This is a **cup of coffee** (object), it is **sitting** (verb) on the table and it is probably **empty** (adjective). Is it a threat to my survival? No. Is it food? Yes. Is it alive? No."
 
 Congratulations! You just recorded an **event** into your short-term memory, in order to facilitate your goal of everyday survival and decision-making.
 
@@ -32,7 +45,7 @@ When it comes to pleasure and pain, there's really only two possibilities as two
 1. There's a unique universal molecular signature corresponding to pain and pleasure that are literally built into the laws of physics itself.
 2. Or, it is simply the by-product of avoidance and attraction to certain stimuli. In which case, your reinforcement learning alrogithms probably do experience suffering. (Although it could perhaps be a micro-experience as trivial as a fraction of a tickle.)
 
-### Enough stoner talk! I just want an AI robot that acts and behaves like a human being.
+### But we just want an AI robot that acts and behaves like a human being.
 
 So let's go back to talking about event-recollection and memory creation. Pretty much 99% of what is going on in your brain as we speak is event-recollection. Think about those moments before you go to sleep where you remind yourself of that cringy joke you told your classmates back in high school.
 
@@ -60,9 +73,13 @@ Simply put, there is no algorithm to building a human-like AI. It'll have to be 
 
 It also helps if your AI has a goals, as well as a meta-goal. The goal of every human being is to collect resources, save energy, etc. The meta-goal is to survive and reproduce. A humanoid robot AI might perhaps be more altruistic and self-sacrificing, or it could be individualistic and act out of self-preservation just like ourselves.
 
-### Most of what goes on inside of our minds is just pointless noise
+### Most of what goes on inside of our minds is analog noise
 
-That's right. Most of what goes on in our minds is just.. chaos. Some of it just happens to increase our chances of reproducing and surviving. And some of it leads to self-sabotage.
+That's right. Most of what goes on in our minds is just analog noise. And you have to remember that the human mind doesn't always act 
+in its own best interests. It only acts upon what it believes will increase your chances of surviving and reproducing in the natural environment.
+
+But modern life isn't a natural environment, and a lot of the behaviors that used to benefit us in ancient times are now starting
+to work against our own best interests. The human brain is the worst computer you could possibly emulate.
 
 Once you filter out the noise, it becomes a lot easier to just isolate the elements of human consciousness that are any good, and then simply get rid of the rest. 
 
