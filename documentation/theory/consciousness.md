@@ -6,7 +6,7 @@ The reason I say 'human' consciousness, is that there's literally infinite possi
 
 ### How does Memory-Creation and Language lead to 'Human' Consciousness?
 
-Language could be thought of as a tool that we use in order to transfer our own reality onto the minds of others, but it also seems to be an ingredient that makes up actual *thought*.
+Language could be thought of as a tool that we use in order to [transfer our own reality onto the minds of others](https://en.wikipedia.org/wiki/Language_and_thought), but it also seems to be an ingredient that makes up actual *thought*.
 
 Think about the advice that is usually given to us whenever we encounter emotional difficulties, hardships and problems in our lives:
 "Talk to a friend" or "Find yourself a good therapist" or "Write down your feelings in a journal".
