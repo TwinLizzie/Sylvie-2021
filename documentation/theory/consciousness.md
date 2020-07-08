@@ -51,7 +51,7 @@ You're probably going to need a lot of storage for the video data (unless you st
 
 ### Decoding written Language back into Reality?
 
-As a bonus, your AI will also even be able to decode every event it has recorded back into video and sound using deep learning.
+As a bonus, your AI will also even be able to [decode every event it has recorded back into video and sound using deep learning](https://youtu.be/9bcbh2hC7Hw).
 
 We already have deep learning algorithms that can turn words and sentences into photograps e.g. "A golden retriever is playing frisbee in the backyard."
 
