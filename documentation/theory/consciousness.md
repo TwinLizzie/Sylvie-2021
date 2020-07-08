@@ -25,7 +25,7 @@ When you look at a cup of coffee, what is the first thing that pops into your mi
 
 Congratulations! You just recorded an **event** into your short-term memory, in order to facilitate your goal of everyday survival and decision-making.
 
-One way we could make machines more conscious is to provide them with an event-recollection engine that translates video footage, sound recordings, tactile sensations, etc. into every-day events that follow a timeline.
+One way we could make machines more conscious is to provide them with an [event-recollection engine](http://www.digitaljournal.com/tech-and-science/technology/google-s-ai-now-captions-images-with-94-accuracy/article/475547) that translates video footage, sound recordings, tactile sensations, etc. into every-day events that follow a timeline.
 
 So rather than having a directory full of raw video footage, sound recordings, touch sensor data logs, etc. you would simply have written transcripts of events that took place on a certain day, at a certain time.
 
