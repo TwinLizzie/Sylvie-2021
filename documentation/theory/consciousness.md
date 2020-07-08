@@ -27,7 +27,9 @@ Congratulations! You just recorded an **event** into your short-term memory, in 
 
 One way we could make machines more conscious is to provide them with an event-recollection engine that translates video footage, sound recordings, tactile sensations, etc. into every-day events that follow a timeline.
 
-So rather than having a directory full of raw video footage, sound recordings, touch sensor data logs, etc. you would simply have written transcripts of events that took place on a certain day, at a certain time:
+So rather than having a directory full of raw video footage, sound recordings, touch sensor data logs, etc. you would simply have written transcripts of events that took place on a certain day, at a certain time.
+
+### A Basic Example of our 'Reality Encoder'
 
 08/07/2020, 11:00am: *New context/location: Bedroom 2, at house Number X, at address X*<br/>
 08/07/2020, 11:58am: A cat has entered current location.<br/>
