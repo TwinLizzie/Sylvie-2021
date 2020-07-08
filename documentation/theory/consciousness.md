@@ -1,32 +1,23 @@
 ## The Twin Lizzie Theory of Consciousness
 
-I would like to propose a theory of consciousness based on the idea that memory-creation and language are the main elements that lead to 'human' consciousness.
+I would like to propose a theory of consciousness based on the idea that memory-creation and language are the main elements that could lead to 'human' consciousness.
 
-The reason I say 'human' consciousness, is that there's literally infinite possible types of consciousness that the law of physics could possibly allow. I should point out that I am also a pan-psychist, and therefore believe that all matter in the universe is conscious to some degree or another. But not all consciousness is *conscious* in the same way.
+The reason I say 'human' consciousness, is that the laws of physics should in theory allow for infinite variations or modes of *being*.
+
+Consciousness could even be quantifiable on a spectrum, with one end of the spectrum representing 'complex' consciousness like humans and
+chimpanzees, and the other end representing 'simple' life forms like ants, bees, microbes and plants.
+
+I should point out that I am also a pan-psychist. If all the hydrogen and carbon molecules in our bodies are indistinguishable from that of a rock sitting at the bottom of the ocean, or a nearby gas giant in outer space, who is to say that the rock isn't *alive*? If all that's going on in our brains are just chemical reactions following the basic laws of physics, who is to say that Jupiter isn't alive and conscious? 
 
 ### How does Memory-Creation and Language lead to 'Human' Consciousness?
 
 Language could be thought of as a tool that we use in order to [transfer our own reality onto the minds of others](https://en.wikipedia.org/wiki/Language_and_thought), but it also seems to be an ingredient that makes up actual *thought*.
 
-Think about the advice that is usually given to us whenever we encounter emotional difficulties, hardships and problems in our lives:
-"Talk to a friend" or "Find yourself a good therapist" or "Write down your feelings in a journal".
+Why does talking about a problem help us think more logically? Why does writing things down on paper have the same effect on memory and learning?
 
-But is it really the case that we *need* language in order to create thought, or could it be that language itself *is* thought?
-What came first, [the chicken or the egg?](https://www.youtube.com/watch?v=_UqxSq19_Aw)
+Are Language and Thought just one and the same? What came first, [the chicken or the egg?](https://www.youtube.com/watch?v=_UqxSq19_Aw)
 
-What we can confidently say is that all human beings are born with a kind of 'natural', auto-generated language. "Goo goo, boo boo, 
-baa baa, maa maa".
-
-But the simplicity of this lanuguage seems to be directly correlated with the simplicity of our consciousness at any given age.
-The more complex our language, the better we can categorize and create patterns. Language seems to give us the infrastructure to 
-work with logic and concepts. 
-
-A baby doesn't contemplate the meaninglessness of existence. A baby doesn't wonder what events took place before its birth. 
-It's only until we start talking and socializing that these concepts seem to manifest.
-
-What we can also confidently say is that language is Logic. Language is Reality. It is Command. It is Statement. It is Code.
-
-It might not even matter if the egg came before the chicken, as long as the chicken is able to cross the road.
+One thing we do know is that Language seems to give us the infrastructure to work with Logic and Concepts, just as Math gives us the infrastructure to work with numbers. Language is Command. Language is Statement. Language is Code.
 
 ### Language as an Encoder of reality
 
@@ -34,7 +25,7 @@ When you look at a cup of coffee, what is the first thing that pops into your mi
 
 Congratulations! You just recorded an **event** into your short-term memory, in order to facilitate your goal of everyday survival and decision-making.
 
-I'd argue that one way we could make machines more conscious is to provide them with an event-recollection engine that interprets video footage, sound recordings, tactile sensations, etc. into every-day events that follow a timeline, and then have this engine encode all of this data into written language. An encoder for Reality itself.
+One way we could make machines more conscious is to provide them with an event-recollection engine that translates video footage, sound recordings, tactile sensations, etc. into every-day events that follow a timeline.
 
 So rather than having a directory full of raw video footage, sound recordings, touch sensor data logs, etc. you would simply have written transcripts of events that took place on a certain day, at a certain time:
 
