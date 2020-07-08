@@ -8,6 +8,10 @@ the same as writing a novel or a screenplay for a movie?
 The number one thing to consider here is that there's more than one character in this 'movie' you're about to shoot, which is the life 
 that you and your robot companion will be living. And that character is You. We'll discuss this in the following sections shortly.
 
+### Artificial Intelligence on its own is not enough
+
+As I said, when we choose who we want as a friend or a partner, it is not enough for the person to simply be able to read, write, speak your language and answer basic questions. They also have to be *interesting* to us as human beings. They have to have substance.
+
 The main problem with Personal Assistant devices like Siri and Alexa is that they're practically indistinguishable from a search engine.
 People interact with them to find answers to questions, not to alleviate their own loneliness. 
 

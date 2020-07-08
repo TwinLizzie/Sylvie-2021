@@ -98,7 +98,7 @@ We still have a secret weapon under our sleeve, however: And that is Film, and S
 
 By owning a Sylvie 2021, you thus becomes the Director of a movie in which you are the protagonist. 
 
-Do you have the Storytelling skills to create a believable character that can win over the hearts and minds of the people in your social circle?
+Do you have the Storytelling skills to [create a believable character](https://github.com/TwinLizzie/Sylvie-2021/blob/master/documentation/theory/suspension_disbelief.md) that can win over the hearts and minds of the people in your social circle?
 
 Do you have the creativity, imagination and technical skills to breathe life into your android girlfriend, and sustain an engaging
 and entertaining Social Media presence that can maintain a suspension of disbelief among your followers?

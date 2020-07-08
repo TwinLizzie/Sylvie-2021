@@ -34,9 +34,38 @@ When you look at a cup of coffee, what is the first thing that pops into your mi
 
 Congratulations! You just recorded an **event** into your short-term memory, in order to facilitate your goal of everyday survival and decision-making.
 
-I'd argue that one way we could make machines more conscious is to provide them with an event-recollection engine that interprets video footage, sound recordings, tactile sensations, etc. into every-day events that follow a timeline, and build an engine that translates all of this data into written language. An encoder for Reality itself.
+I'd argue that one way we could make machines more conscious is to provide them with an event-recollection engine that interprets video footage, sound recordings, tactile sensations, etc. into every-day events that follow a timeline, and then have this engine encode all of this data into written language. An encoder for Reality itself.
+
+So rather than having a directory full of raw video footage, sound recordings, touch sensor data logs, etc. you would simply have written transcripts of events that took place on a certain day, at a certain time:
+
+08/07/2020, 1:00pm: *New context/location: Bedroom 2, at house Number X, at address X*
+08/07/2020, 11:58am: A cat has entered current location.
+08/07/2020, 11:59am: A cat has licked its paw.
+08/07/2020, 12:05pm: Admin has entered current location.
+08/07/2020, 12:05pm: Admin sat down by the desk.
+08/07/2020, 12:30pm: Admin stood up and made a cup of coffee.
+08/07/2020, 12:45am: A cat scratched the carpet.
+08/07/2020, 1:00pm: *New context/location: Bedroom 1, at house Number X, at address X*
+08/07/2020, 1:20pm: Admin has left the current location.
+
+As is the case with our own minds, the AI has to be able to decide what kind of information is to be recorded, and what kind of information
+has to be filtered out, in order to avoid an information-overload. Usually our minds only remember interesting events, like a sudden
+change in our environments.
+
+Obviously, the more processing power your AI has, the more data it'll be able to process and record about the environment. A simple AI might remember that A Cat entered its current location and licked its paw, but it probably won't be concerned with whether it licked its Left paw, or its Right paw. (Unless you specifically instruct the AI to look out for these details for whatever reason.)   
 
 You're probably going to need a lot of storage for the video data (unless you store your footage in low resolution). Or, you could simply translate the bulk of those events into written language, and store it as text files, except for the more important events where photographic memory is vital. Then you can have centuries worth of event-recollection!
+
+### Decoding written Language back into Reality?
+
+As a bonus, your AI will also even be able to decode every event it has recorded back into video and sound using deep learning.
+
+We already have deep learning algorithms that can turn words and sentences into photograps e.g. "A golden retriever is playing frisbee in the backyard."
+
+Keep in mind, though, that once you decode an already encoded version of an event, a lot of the original detail will be lost.
+
+But that is exactly what happens when we remember an event, and then try to describe the event to somebody else: The other person will
+never be able to know *what exactly it was like to be there and witness it*, but they will still have a *vague picture* of the event in their heads. But in most cases, that is all that is required for successful communication!
 
 ### Now, what about Pain and Pleasure? Don't they make us conscious as well?
 
