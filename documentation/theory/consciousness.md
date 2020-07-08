@@ -38,15 +38,15 @@ I'd argue that one way we could make machines more conscious is to provide them 
 
 So rather than having a directory full of raw video footage, sound recordings, touch sensor data logs, etc. you would simply have written transcripts of events that took place on a certain day, at a certain time:
 
-08/07/2020, 1:00pm: *New context/location: Bedroom 2, at house Number X, at address X*
-08/07/2020, 11:58am: A cat has entered current location.
-08/07/2020, 11:59am: A cat has licked its paw.
-08/07/2020, 12:05pm: Admin has entered current location.
-08/07/2020, 12:05pm: Admin sat down by the desk.
-08/07/2020, 12:30pm: Admin stood up and made a cup of coffee.
-08/07/2020, 12:45am: A cat scratched the carpet.
-08/07/2020, 1:00pm: *New context/location: Bedroom 1, at house Number X, at address X*
-08/07/2020, 1:20pm: Admin has left the current location.
+08/07/2020, 1:00pm: *New context/location: Bedroom 2, at house Number X, at address X*<br/>
+08/07/2020, 11:58am: A cat has entered current location.<br/>
+08/07/2020, 11:59am: A cat has licked its paw.<br/>
+08/07/2020, 12:05pm: Admin has entered current location.<br/>
+08/07/2020, 12:05pm: Admin sat down by the desk.<br/>
+08/07/2020, 12:30pm: Admin stood up and made a cup of coffee.<br/>
+08/07/2020, 12:45am: A cat scratched the carpet.<br/>
+08/07/2020, 1:00pm: *New context/location: Bedroom 1, at house Number X, at address X*<br/>
+08/07/2020, 1:20pm: Admin has left the current location.<br/>
 
 As is the case with our own minds, the AI has to be able to decide what kind of information is to be recorded, and what kind of information
 has to be filtered out, in order to avoid an information-overload. Usually our minds only remember interesting events, like a sudden
