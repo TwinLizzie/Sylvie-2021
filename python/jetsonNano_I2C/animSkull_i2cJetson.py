@@ -189,7 +189,7 @@ def move_face_servos(pos_browR=None, pos_browL=None, pos_lip=None, pos_cornerR=N
 initialize_servos() 
 
 while True:
-	if keyboard.is_pressed('q'): 	
+	if keyboard.is_pressed('q'):
 		sys_message("KEYBOARD KEY [Q] PRESSED!")
 
 		move_eyelid_servos(15, 155, 120, 50) # Fixed on Jan 11, 2021. Bottom eyelids were squeezing too much!
