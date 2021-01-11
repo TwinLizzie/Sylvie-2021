@@ -40,7 +40,8 @@ sg90_lip = 10
 sg90_corner1 = 11
 sg90_corner2 = 12
 
-sg90_jaw = 13
+sg90_jaw1 = 13
+sg90_jaw2 = 14
 
 # Offsets of articulation points... for fine tuning
 

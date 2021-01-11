@@ -15,7 +15,7 @@ def write_serial(status, printed):
     if status != previous_status:
         os.system('clear')	
         print(printed)
-        ser.write(str(status))
+        ser.write(str(status).encode())
         previous_status = status
 
 def clear_serial(status):
@@ -23,7 +23,7 @@ def clear_serial(status):
     if status != previous_status:
         os.system('clear')
         print("WAITING FOR USER INPUT! (TRY Q,W,E,R,T,A,S,D,F)")
-        ser.write(str(status))
+        ser.write(str(status).encode())
         previous_status = status
         
 def sys_message(message):

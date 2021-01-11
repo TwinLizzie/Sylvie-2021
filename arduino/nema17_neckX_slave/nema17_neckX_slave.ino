@@ -5,13 +5,13 @@
 #include <Wire.h>
 
 //int i2cMessage = 0;
-int i2cAddress = 0x20;
+int i2cAddress = 0x10;
 
 // Stepper motor config
 int microstepRes = 4;
 
-int stepperSpeed = 1200 * microstepRes; //maximum steps per second
-int motorAccel = 300 * microstepRes; //steps/second/second to accelerate
+int stepperSpeed = 1600 * microstepRes; //maximum steps per second
+int motorAccel = 600 * microstepRes; //steps/second/second to accelerate
 
 int gearReduction = 4.28;
 int stepsPerRev = 100; // e.g. one full revolution is 200 at 1.8deg. 100 for half. 50 for quarter.. etc.
@@ -52,27 +52,27 @@ void loop(){
   if(stepperState > 0) {
     
     if(stepperState == 50){
-        stepper_one.move(10 * 4.28 * microstepRes); //Move X times revolutions, according to gear reduction ratio.
+        stepper_one.move(15 * 4.28 * microstepRes); //Move X times revolutions, according to gear reduction ratio.
         stepperState = 0;
     }
     else if(stepperState == 51){    
-        stepper_one.move(-10 * 4.28 * microstepRes);  
+        stepper_one.move(-15 * 4.28 * microstepRes);  
         stepperState = 0;                      
     }
     else if(stepperState == 52){
-        stepper_one.move(20 * 4.28 * microstepRes);
+        stepper_one.move(25 * 4.28 * microstepRes);
         stepperState = 0;         
     }
     else if(stepperState == 53){
-        stepper_one.move(-20 * 4.28 * microstepRes);
+        stepper_one.move(-25 * 4.28 * microstepRes);
         stepperState = 0;         
     }
     else if(stepperState == 54){
-        stepper_one.move(30 * 4.28 * microstepRes);
+        stepper_one.move(25 * 4.28 * microstepRes);
         stepperState = 0;         
     }
     else if(stepperState == 55){
-        stepper_one.move(-30 * 4.28 * microstepRes);
+        stepper_one.move(-25 * 4.28 * microstepRes);
         stepperState = 0;         
     }
   }
