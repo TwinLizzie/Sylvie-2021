@@ -192,7 +192,7 @@ while True:
 	if keyboard.is_pressed('q'): 	
 		sys_message("KEYBOARD KEY [Q] PRESSED!")
 
-		move_eyelid_servos(15, 155, 120, 50) # Fixed this after Promo video #1. Bottom eyelids were too high!
+		move_eyelid_servos(15, 155, 120, 50) # Fixed on Jan 11, 2021. Bottom eyelids were squeezing too much!
 		
 		sleep(0.25)
 		clear_terminal(0)
@@ -336,9 +336,25 @@ while True:
 
 		move_face_servos(90, 90, 90, 90, 90, 90, 90)
 		time.sleep(0.05)
-		move_face_servos(95, 85, 95, 100, 80, 115, 65)
+		move_face_servos(95, 85, 93, 97, 83, 115, 65)
 		time.sleep(0.05)
-		move_eyelid_servos(70, 110, 110, 70)
+		move_eyelid_servos(70, 110, 105, 70)
+		
+		sleep(0.25)
+		clear_terminal(0) 
+
+	elif keyboard.is_pressed('z'): 	
+		sys_message("KEYBOARD KEY [Z] PRESSED!")   
+
+		move_eyelid_servos(15, 90, 120, 90)
+		
+		sleep(0.25)
+		clear_terminal(0) 
+
+	elif keyboard.is_pressed('x'): 	
+		sys_message("KEYBOARD KEY [X] PRESSED!")   
+
+		move_eyelid_servos(90, 155, 90, 50)
 		
 		sleep(0.25)
 		clear_terminal(0) 
@@ -350,7 +366,7 @@ while True:
 		time.sleep(0.05)
 		move_face_servos(105, 80, 100, 80, 100, 120, 60)
 		time.sleep(0.05)		
-		move_face_servos(105, 80, 100, 80, 100, 130, 50)
+		move_face_servos(105, 80, 100, 80, 100, 135, 45)
 
 		sleep(0.25)
 		clear_terminal(0)  
