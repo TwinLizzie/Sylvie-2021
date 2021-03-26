@@ -1,0 +1,124 @@
+#include "FastAccelStepper.h"
+#include "Wire.h"
+
+#define dirPinStepper    2
+#define enablePinStepper 4
+#define stepPinStepper   9  // OC1A in case of AVR
+
+FastAccelStepperEngine engine = FastAccelStepperEngine();
+FastAccelStepper *stepper = NULL;
+
+int i2cAddress = 0x10;
+
+int bevelGear = (49 / 12);
+int gearRatio = 53.575757576;
+int stepsPerRev = 20;
+int microsteps = 4;
+int stepperState = 0;
+
+long formula = ((((stepsPerRev * gearRatio) * microsteps) / 360) * bevelGear);
+
+//int currentAngle = 1000;
+//int newAngle = 0;
+
+void setup() {
+  Wire.begin(i2cAddress);
+  Wire.onReceive(receiveEvent);
+  
+  engine.init();
+  stepper = engine.stepperConnectToPin(stepPinStepper);
+  if (stepper) {
+    stepper->setDirectionPin(dirPinStepper);
+    stepper->setEnablePin(enablePinStepper);
+    stepper->setAutoEnable(true);
+
+    stepper->setSpeed(100);       // the parameter is us/step !!!
+    stepper->setAcceleration(20000);
+  }
+}
+
+void receiveEvent(int bytes) {
+  stepperState = Wire.read();    // read one character from the I2C
+}
+
+void loop() {
+  switch (stepperState) {
+    case 50:
+      stepper->move(120 * formula);
+      stepperState = 0;
+      break;
+    case 51:
+      stepper->move(-120 * formula);  
+      stepperState = 0;
+      break;
+    case 52:
+      stepper->move(225 * formula);
+      stepperState = 0;
+      break;
+    case 53:
+      stepper->move(-225 * formula); 
+      stepperState = 0;
+      break;
+    case 54:
+      stepper->setSpeed(100);       // the parameter is us/step !!!
+      stepper->setAcceleration(20000);
+      stepper->move(450 * formula);
+      stepperState = 0;    
+      break;                
+    case 55:
+      stepper->setSpeed(100);       // the parameter is us/step !!!
+      stepper->setAcceleration(20000);      
+      stepper->move(-450 * formula);
+      stepperState = 0; 
+      break;
+    case 56:
+      stepper->setSpeed(200);       // the parameter is us/step !!!
+      stepper->setAcceleration(10000);      
+      stepper->move(450 * formula);
+      stepperState = 0; 
+      break;
+    case 57:
+      stepper->setSpeed(200);       // the parameter is us/step !!!
+      stepper->setAcceleration(10000);
+      stepper->move(-450 * formula);
+      stepperState = 0; 
+      break;   
+    case 58:
+      stepper->setSpeed(400);       // the parameter is us/step !!!
+      stepper->setAcceleration(5000);      
+      stepper->move(450 * formula);
+      stepperState = 0; 
+      break;
+    case 59:
+      stepper->setSpeed(400);       // the parameter is us/step !!!
+      stepper->setAcceleration(5000);
+      stepper->move(-450 * formula);
+      stepperState = 0; 
+      break;  
+    case 60:
+      stepper->setSpeed(75);       // the parameter is us/step !!!
+      stepper->setAcceleration(30000);      
+      stepper->move(450 * formula);
+      stepperState = 0; 
+      break;
+    case 61:
+      stepper->setSpeed(75);       // the parameter is us/step !!!
+      stepper->setAcceleration(30000);
+      stepper->move(-450 * formula);
+      stepperState = 0; 
+      break;   
+    case 62:
+      stepper->setSpeed(50);       // the parameter is us/step !!!
+      stepper->setAcceleration(40000);      
+      stepper->move(10 * formula);
+      stepperState = 0; 
+      break;
+    case 63:
+      stepper->setSpeed(50);       // the parameter is us/step !!!
+      stepper->setAcceleration(40000);
+      stepper->move(-10 * formula);
+      stepperState = 0; 
+      break;                             
+    break;
+  }
+}
