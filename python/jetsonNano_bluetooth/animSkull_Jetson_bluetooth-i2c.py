@@ -1,4 +1,4 @@
-# Keyboard and i2c control for Sylvie 2021 (Animatronic Skull)
+# Bluetooth and i2c control for Sylvie 2021 (Animatronic Skull)
 
 from adafruit_servokit import ServoKit
 from time import sleep
@@ -9,8 +9,13 @@ import busio
 import bluetooth
 # import time
 
-import keyboard
+# import keyboard
 import os
+
+# Bluetooth socket settings
+
+server_socket=bluetooth.BluetoothSocket( bluetooth.RFCOMM )
+port = 1
 
 # Nvidia Jetson Nano i2c Bus 0 and 1
 
@@ -82,30 +87,6 @@ previous_pos_cornerL = 90
 previous_pos_jawR = 90
 previous_pos_jawL = 90
 
-# Set status of message and value
-
-previous_status = "0"
-previous_message = ""
-
-default_msg0 = ""
-default_msg1 = "Welcome to SylvieOS 2021! App: Animatronic Skull"
-default_msg2 = "WAITING FOR USER INPUT! (TRY Q,W,E,R,T,A,S,D,F)"
-
-def clear_terminal(status):
-	global previous_status
-	if status != previous_status:
-		os.system('clear')
-		print(default_msg1)
-		print(default_msg2)
-		previous_status = status
-
-def sys_message(msg1, msg2=default_msg0):
-	global previous_message
-	if msg1 != previous_message:
-		os.system('clear')
-		print(msg1)
-		print(msg2)
-		previous_message = msg1    
 
 def initialize_servos():
 
@@ -189,139 +170,131 @@ def move_face_servos(pos_browR=None, pos_browL=None, pos_lip=None, pos_cornerR=N
 
 initialize_servos() 
 
+print("Waiting for Bluetooth connection...")
+server_socket.bind(("",port))
+server_socket.listen(1)
+client_socket,address = server_socket.accept()
+print("Accepted connection from ",address)
+
 while True:
-	if keyboard.is_pressed('q'):
-		sys_message("KEYBOARD KEY [Q] PRESSED!")
+	res = client_socket.recv(1024)
+	client_socket.send(res)
+	if str(res)[2] == 'q':
+		print("KEY [Q] RECEIVED!")
 
-		move_eyelid_servos(15, 155, 120, 50) # Fixed on Jan 11, 2021. Bottom eyelids were squeezing too much!
+		move_eyelid_servos(15, 155, 120, 50)
 		
 		sleep(0.25)
-		clear_terminal(0)
 	
-	elif keyboard.is_pressed('w'): 	
-		sys_message("KEYBOARD KEY [W] PRESSED!")
+	elif str(res)[2] == 'w': 	
+		print("KEY [W] RECEIVED!")
 
-		move_eyelid_servos(90, 90, 90, 90) # Eyelashes make it easier to close the eyes completely.
+		move_eyelid_servos(90, 90, 90, 90)
 		
 		sleep(0.25)
-		clear_terminal(0)
 	
-	elif keyboard.is_pressed('e'): 	
-		sys_message("KEYBOARD KEY [E] PRESSED!")       
+	elif str(res)[2] == 'e': 	
+		print("KEY [E] RECEIVED!")       
 
 		move_eyelid_servos(60, 120, 120, 60)
 		
-		sleep(0.25)  
-		clear_terminal(0)
+		sleep(0.25)
 	
-	elif keyboard.is_pressed('r'): 	
-		sys_message("KEYBOARD KEY [R] PRESSED!") 
+	elif str(res)[2] == 'r': 	
+		print("KEY [R] RECEIVED!") 
 		
 		move_eyelid_servos(90, 90, 90, 90)
 
 		sleep(0.25)
-		clear_terminal(0)
 	
-	elif keyboard.is_pressed('a'): 	
-		sys_message("KEYBOARD KEY [A] PRESSED!") 
+	elif str(res)[2] == 'a': 	
+		print("KEY [A] RECEIVED!") 
 
 		move_eye_servos(105, 70)		
 		move_eyelid_servos(120, 60, 95, 85)
 
 		sleep(0.25)
-		clear_terminal(0)
 	
-	elif keyboard.is_pressed('s'): 	
-		sys_message("KEYBOARD KEY [S] PRESSED!")
+	elif str(res)[2] == 's': 	
+		print("KEY [S] RECEIVED!")
 
 		move_eye_servos(75, 100)		
 		move_eyelid_servos(80, 100, 75, 115)
 		
 		sleep(0.25)
-		clear_terminal(0)
 	
-	elif keyboard.is_pressed('d'): 	
-		sys_message("KEYBOARD KEY [D] PRESSED!")
+	elif str(res)[2] == 'd': 	
+		print("KEY [D] RECEIVED!")
 
 		move_eye_servos(None, None, 65, 120)
 		
 		sleep(0.25)
-		clear_terminal(0)
 	
-	elif keyboard.is_pressed('f'): 	
-		sys_message("KEYBOARD KEY [F] PRESSED!")
+	elif str(res)[2] == 'f': 	
+		print("KEY [F] RECEIVED!")
 
 		move_eye_servos(None, None, 130, 60)
 		
 		sleep(0.25)
-		clear_terminal(0)
 	
-	elif keyboard.is_pressed('t'): 	
-		sys_message("KEYBOARD KEY [T] PRESSED!")   
+	elif str(res)[2] == 't': 	
+		print("KEY [T] RECEIVED")   
 		
 		i2c_bus0.writeto(nema17x_address, "6", stop=False)
 		
 		sleep(0.25)
-		clear_terminal(0)
 	
-	elif keyboard.is_pressed('y'): 	
-		sys_message("KEYBOARD KEY [Y] PRESSED!") 
+	elif str(res)[2] == 'y': 	
+		print("KEY [Y] RECEIVED!") 
 		
 		i2c_bus0.writeto(nema17x_address, "7", stop=False)
 		
 		sleep(0.25)
-		clear_terminal(0)
 	
-	elif keyboard.is_pressed('g'): 	
-		sys_message("KEYBOARD KEY [G] PRESSED!")    
+	elif str(res)[2] == 'g': 	
+		print("KEY [G] RECEIVED!")    
 		
 		i2c_bus0.writeto(nema17z_address, "2", stop=False)
 		
 		sleep(0.25)
-		clear_terminal(0)
 	
-	elif keyboard.is_pressed('h'): 	
-		sys_message("KEYBOARD KEY [H] PRESSED!")
+	elif str(res)[2] == 'h': 	
+		print("KEY [H] RECEIVED!")
 		
 		i2c_bus0.writeto(nema17z_address, "3", stop=False)
 		
 		sleep(0.25)
-		clear_terminal(0)
 	
-	elif keyboard.is_pressed('b'): 	
-		sys_message("KEYBOARD KEY [B] PRESSED!")         
+	elif str(res)[2] == 'b': 	
+		print("KEY [B] RECEIVED!")         
 		
 		move_face_servos(80, 100)
 		
 		sleep(0.25)
-		clear_terminal(0)
 	
-	elif keyboard.is_pressed('n'): 	
-		sys_message("KEYBOARD KEY [N] PRESSED!")  
+	elif str(res)[2] == 'n': 	
+		print("KEY [N] RECEIVED!")  
 
 		move_face_servos(100, 80)
 		
 		sleep(0.25)
-		clear_terminal(0)
 	
-	elif keyboard.is_pressed('u'): 	
-		sys_message("KEYBOARD KEY [U] PRESSED!")
+	elif str(res)[2] == 'u': 	
+		print("KEY [U] RECEIVED!")
 
 		move_face_servos(None, None, 110)
 		
 		sleep(0.25)
-		clear_terminal(0)
 	
-	elif keyboard.is_pressed('i'): 	
-		sys_message("KEYBOARD KEY [I] PRESSED!")     
+	elif str(res)[2] == 'i': 	
+		print("KEY [I] RECEIVED!")     
 
 		move_face_servos(None, None, 90)
 		
 		sleep(0.25)
-		clear_terminal(0)   
 	
-	elif keyboard.is_pressed('j'): 	
-		sys_message("KEYBOARD KEY [J] PRESSED!")
+	elif str(res)[2] == 'j': 	
+		print("KEY [J] RECEIVED!")
 		
 		move_face_servos(90, 90, 90, 90, 90, 90, 90)
 		time.sleep(0.05)
@@ -329,11 +302,10 @@ while True:
 		time.sleep(0.05)
 		move_eyelid_servos(90, 90, 90, 90)
 
-		sleep(0.25)
-		clear_terminal(0) 
+		sleep(0.25) 
 	
-	elif keyboard.is_pressed('k'): 	
-		sys_message("KEYBOARD KEY [K] PRESSED!")   
+	elif str(res)[2] == 'k': 	
+		print("KEY [K] RECEIVED!")   
 
 		move_face_servos(90, 90, 90, 90, 90, 90, 90)
 		time.sleep(0.05)
@@ -342,26 +314,23 @@ while True:
 		move_eyelid_servos(70, 110, 105, 70)
 		
 		sleep(0.25)
-		clear_terminal(0) 
 
-	elif keyboard.is_pressed('z'): 	
-		sys_message("KEYBOARD KEY [Z] PRESSED!")   
+	elif str(res)[2] == 'z': 	
+		print("KEY [Z] RECEIVED!")   
 
 		move_eyelid_servos(15, 90, 120, 90)
 		
 		sleep(0.25)
-		clear_terminal(0) 
 
-	elif keyboard.is_pressed('x'): 	
-		sys_message("KEYBOARD KEY [X] PRESSED!")   
+	elif str(res)[2] == 'x': 	
+		print("KEY [X] RECEIVED!")   
 
 		move_eyelid_servos(90, 155, 90, 50)
 		
 		sleep(0.25)
-		clear_terminal(0) 
 	
-	elif keyboard.is_pressed('1'): 	
-		sys_message("KEYBOARD KEY [1] PRESSED!")         
+	elif str(res)[2] == '1': 	
+		print("KEY [1] RECEIVED!")         
 
 		move_face_servos(105, 80, 100, 80, 100, 110, 70)
 		time.sleep(0.05)
@@ -370,10 +339,9 @@ while True:
 		move_face_servos(105, 80, 100, 80, 100, 135, 45)
 
 		sleep(0.25)
-		clear_terminal(0)  
 	
-	elif keyboard.is_pressed('2'): 	
-		sys_message("KEYBOARD KEY [2] PRESSED!")         
+	elif str(res)[2] == '2': 	
+		print("KEY [2] RECEIVED!")         
 
 		move_face_servos(90, 90, 90, 90, 90, 125, 55)
 		time.sleep(0.05)		
@@ -381,31 +349,22 @@ while True:
 		time.sleep(0.05)
 		move_face_servos(90, 90, 90, 90, 90, 105, 75)
 
-		sleep(0.25)
-		clear_terminal(0) 
+		sleep(0.25) 
 	
-	elif keyboard.is_pressed('o'): 	
-		sys_message("POSITIONS RESET!")
+	elif str(res)[2] == 'o': 	
+		print("KEY [O] RECEIVED - POSITIONS RESET!")
 
 		move_eye_servos(90, 90, 90, 90)
 		move_eyelid_servos(90, 90, 90, 90)
 		move_face_servos(90, 90, 90, 90, 90, 90, 90)	
 
 		sleep(0.25)  
-		clear_terminal(0)  
 	
-	elif keyboard.is_pressed('p'):
-		sys_message("DONE.")	
-		sleep(1)
-		os.system('stty echo')                
-		os.system('clear')
-		exit()
-	else:		
-		sys_message(default_msg1, default_msg2)  
+	elif str(res)[2] == 'p':
+		print("Quit")
+		break
+	else:
+		print("RECEIVED UNUSUAL COMMAND: ",res)
 
-# while True:
-#    var = input("")
-#    if not var:
-#        continue
-
-#    writeNumber(var)
+client_socket.close()
+server_socket.close()

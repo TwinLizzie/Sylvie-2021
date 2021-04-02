@@ -31,4 +31,14 @@ server_socket.close()
 # 5. sudo systemctl daemon-reload	
 # 6. sudo systemctl restart bluetooth.service
 # https://scribles.net/setting-up-bluetooth-serial-port-profile-on-raspberry-pi/
-
+#
+# To get this working properly, I've had to rebuild the kernel with RFCOMM TTY support
+# https://blog.hypriot.com/post/nvidia-jetson-nano-build-kernel-docker-optimized/
+# https://developer.nvidia.com/embedded/linux-tegra
+#
+# I've also had to systemctl disable bluetooth.service and then tmux into
+# sudo /usr/lib/bluetooth/bluetoothd -C
+# because the normal service simply refuses to run with compatibility mode for some reason?
+#
+# Either way, you can use the normal Bluez version (5.48) from the ppa.
+# It's easier to pair using the blueman program than the commandline.. too! 
