@@ -12,11 +12,7 @@ int motorAccel = 2400 * microstepRes; //steps/second/second to accelerate
 // int gearReduction = 53.575757576;
 // int stepsPerRev = 200; // e.g. one full revolution is 200 at 1.8deg. 100 for half. 50 for quarter.. etc.
 
-int resetPin = 5;
-int m2Pin = 6;
-int m1Pin = 7;
-int m0Pin = 8; 
-int enablePin = 4; // Turn motor driver on/off (can save power when motor is idle)
+int resetPin = 5;<int enablePin = 4; // Turn motor driver on/off (can save power when motor is idle)
 
 //set up the accelStepper intance
 //the "1" tells it we are using a driver (DRV8825 or other)
