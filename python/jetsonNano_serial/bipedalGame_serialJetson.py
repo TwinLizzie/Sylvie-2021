@@ -103,19 +103,6 @@ while True:
 
                 ser.write(encoded_command.encode("utf-8"))
 
-                #mb_i2c.writeToBytes(1, n23_thighL1_address, str(int(round((gbx_L1 * 10), 1))))
-                #mb_i2c.writeToBytes(1, n23_kneeL1_address, str(int(round((gbx_L2 * 10), 1))))
-                #mb_i2c.writeToBytes(1, n23_legL1_address, str(int(round((gbx_L3 * 10), 1))))
-
-                #mb_i2c.writeToBytes(1, n23_thighR1_address, str(int(round((gbx_R1 * 10), 1))))
-                #mb_i2c.writeToBytes(1, n23_kneeR1_address, str(int(round((gbx_R2 * 10), 1))))
-                #mb_i2c.writeToBytes(1, n23_legR1_address, str(int(round((gbx_R3 * 10), 1))))
-
-                #mb_i2c.writeToBytes(1, n17_sRockL2_address, str(int(round((gbx_sr_L2 * 10), 1))))
-                #mb_i2c.writeToBytes(1, n17_sRockR2_address, str(int(round((gbx_sr_R2 * 10), 1))))
-
-                #mb_i2c.writeToBytes(1, n17_waist_address, str(int(round((gbx_waist * 10), 1))))
-
                 sleep(0.25)
 
             os.system('clear')
@@ -414,3 +401,167 @@ while True:
 
             on_startup = False
             previous_menu = -1  
+    if keyboard.is_pressed('right'):
+            os.system('clear')
+            print("NAVIGATING TO MENU 2")
+
+            sleep(1)
+
+            on_startup = False
+            menu = 2
+            previous_menu = -1
+    elif menu == 2:
+        if menu != previous_menu:
+            os.system('clear')    
+            print("Individual joint tweaking menu")
+            print("This is where gearboxes can be adjusted one at a time")
+            print("Press QWERTYASDFGH to move one gearbox by 0.5 degrees")
+
+            previous_menu = menu
+
+        # Left leg
+
+        if keyboard.is_pressed('q'):
+            os.system('clear')
+            print("KEYBOARD KEY [Q] PRESSED!")
+
+            sleep(0.25)
+
+            encoded_message = "2002,none,none,none,none,none\n"
+            ser.write(encoded_message.encode("utf-8"))
+
+            on_startup = False
+            previous_menu = -1
+        if keyboard.is_pressed('w'):
+            os.system('clear')
+            print("KEYBOARD KEY [W] PRESSED!")
+
+            sleep(0.25)
+
+            encoded_message = "2003,none,none,none,none,none\n"
+            ser.write(encoded_message.encode("utf-8"))
+
+            on_startup = False
+            previous_menu = -1
+        if keyboard.is_pressed('e'):
+            os.system('clear')
+            print("KEYBOARD KEY [E] PRESSED!")
+
+            sleep(0.25)
+
+            encoded_message = "none,2002,none,none,none,none\n"
+            ser.write(encoded_message.encode("utf-8"))
+
+            on_startup = False
+            previous_menu = -1
+        if keyboard.is_pressed('r'):
+            os.system('clear')
+            print("KEYBOARD KEY [R] PRESSED!")
+
+            sleep(0.25)
+
+            encoded_message = "none,2003,none,none,none,none\n"
+            ser.write(encoded_message.encode("utf-8"))
+
+            on_startup = False
+            previous_menu = -1
+        if keyboard.is_pressed('t'):
+            os.system('clear')
+            print("KEYBOARD KEY [T] PRESSED!")
+
+            sleep(0.25)
+
+            encoded_message = "none,none,2002,none,none,none\n"
+            ser.write(encoded_message.encode("utf-8"))
+
+            on_startup = False
+            previous_menu = -1
+        if keyboard.is_pressed('y'):
+            os.system('clear')
+            print("KEYBOARD KEY [Y] PRESSED!")
+
+            sleep(0.25)
+
+            encoded_message = "none,none,2003,none,none,none\n"
+            ser.write(encoded_message.encode("utf-8"))
+
+            on_startup = False
+            previous_menu = -1
+
+        # Right leg
+
+        if keyboard.is_pressed('a'):
+            os.system('clear')
+            print("KEYBOARD KEY [A] PRESSED!")
+
+            sleep(0.25)
+
+            encoded_message = "none,none,none,2002,none,none\n"
+            ser.write(encoded_message.encode("utf-8"))
+
+            on_startup = False
+            previous_menu = -1
+        if keyboard.is_pressed('s'):
+            os.system('clear')
+            print("KEYBOARD KEY [S] PRESSED!")
+
+            sleep(0.25)
+
+            encoded_message = "none,none,none,2003,none,none\n"
+            ser.write(encoded_message.encode("utf-8"))
+
+            on_startup = False
+            previous_menu = -1
+        if keyboard.is_pressed('d'):
+            os.system('clear')
+            print("KEYBOARD KEY [D] PRESSED!")
+
+            sleep(0.25)
+
+            encoded_message = "none,none,none,none,2002,none\n"
+            ser.write(encoded_message.encode("utf-8"))
+
+            on_startup = False
+            previous_menu = -1
+        if keyboard.is_pressed('f'):
+            os.system('clear')
+            print("KEYBOARD KEY [F] PRESSED!")
+
+            sleep(0.25)
+
+            encoded_message = "none,none,none,none,2003,none\n"
+            ser.write(encoded_message.encode("utf-8"))
+
+            on_startup = False
+            previous_menu = -1
+        if keyboard.is_pressed('g'):
+            os.system('clear')
+            print("KEYBOARD KEY [G] PRESSED!")
+
+            sleep(0.25)
+
+            encoded_message = "none,none,none,none,none,2002\n"
+            ser.write(encoded_message.encode("utf-8"))
+
+            on_startup = False
+            previous_menu = -1
+        if keyboard.is_pressed('h'):
+            os.system('clear')
+            print("KEYBOARD KEY [H] PRESSED!")
+
+            sleep(0.25)
+
+            encoded_message = "none,none,none,none,none,2003\n"
+            ser.write(encoded_message.encode("utf-8"))
+
+            on_startup = False
+            previous_menu = -1
+        if keyboard.is_pressed('left'):
+            os.system('clear')
+            print("RETURNING TO MENU 1")
+
+            sleep(1)
+
+            on_startup = False
+            menu = 1
+            previous_menu = -1
