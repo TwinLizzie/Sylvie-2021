@@ -1,9 +1,13 @@
 # Keyboard and i2c control for Sylvie 2021 (Bipedal Robot Lower Body)
 
-from time import sleep
+import sys
+# insert at 1, 0 is the script path (or '' in REPL)
+sys.path.insert(1, '../inverse_kinematics')
 
 # import board
 # import busio
+
+from time import sleep
 
 import smbus
 import keyboard
