@@ -13,6 +13,9 @@ import nanoik_v2 as nanoik
 
 ser = serial.Serial('/dev/ttyUSB0', 9600)
 
+# n17_sRockL1_address = 0x11
+# n17_sRockR1_address = 0x12
+
 # Our global variables
 previous_menu = 0
 menu = 0      
