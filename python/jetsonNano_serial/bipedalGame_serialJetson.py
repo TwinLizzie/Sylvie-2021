@@ -59,6 +59,39 @@ ra3R_old = 0
 
 on_startup = True
 
+# Untested code
+def enc_message_two(i):
+    switcher={
+        "q":"2002,none,none,none,none,none\n",
+        "w":"2003,none,none,none,none,none\n",
+        "e":"none,2002,none,none,none,none\n",
+        "r":"none,2003,none,none,none,none\n",
+        "t":"none,none,2002,none,none,none\n",
+        "y":"none,none,2003,none,none,none\n",
+        "a":"none,none,none,2002,none,none\n",
+        "s":"none,none,none,2003,none,none\n",
+        "d":"none,none,none,none,2002,none\n",
+        "f":"none,none,none,none,2003,none\n",
+        "g":"none,none,none,none,none,2002\n",
+        "h":"none,none,none,none,none,2003\n",
+    }
+    return switcher.get(i,"Invalid command")
+
+# Untested code
+def broadcaster_use(keyboard_key):
+    os.system('clear')
+    print("KEYBOARD KEY [" + keyboard_key + "] PRESSED!")
+
+    sleep(0.25)
+
+    encoded_command = enc_message_two(keyboard_key)
+    ser.write(encoded_command.encode("utf-8"))
+
+    on_startup = False
+    previous_menu = -1
+
+#def set_ee(val_zL, val_xL, val_zR, val_xR, val_zL_sr, val_zR_zr): 
+
 while True:
     if menu == 0:
         os.system('clear')
@@ -131,6 +164,8 @@ while True:
         ra1R_old = solvedik_right[0]
         ra2R_old = solvedik_right[1]
         ra3R_old = solvedik_right[2]
+
+        
 
         if keyboard.is_pressed('1'):
             os.system('clear')
@@ -423,142 +458,36 @@ while True:
             previous_menu = menu
 
         # Left leg
+        # Untested code
 
         if keyboard.is_pressed('q'):
-            os.system('clear')
-            print("KEYBOARD KEY [Q] PRESSED!")
-
-            sleep(0.25)
-
-            encoded_message = "2002,none,none,none,none,none\n"
-            ser.write(encoded_message.encode("utf-8"))
-
-            on_startup = False
-            previous_menu = -1
+            broadcaster_use('q')
         if keyboard.is_pressed('w'):
-            os.system('clear')
-            print("KEYBOARD KEY [W] PRESSED!")
-
-            sleep(0.25)
-
-            encoded_message = "2003,none,none,none,none,none\n"
-            ser.write(encoded_message.encode("utf-8"))
-
-            on_startup = False
-            previous_menu = -1
+            broadcaster_use('w')
         if keyboard.is_pressed('e'):
-            os.system('clear')
-            print("KEYBOARD KEY [E] PRESSED!")
-
-            sleep(0.25)
-
-            encoded_message = "none,2002,none,none,none,none\n"
-            ser.write(encoded_message.encode("utf-8"))
-
-            on_startup = False
-            previous_menu = -1
+            broadcaster_use('e')
         if keyboard.is_pressed('r'):
-            os.system('clear')
-            print("KEYBOARD KEY [R] PRESSED!")
-
-            sleep(0.25)
-
-            encoded_message = "none,2003,none,none,none,none\n"
-            ser.write(encoded_message.encode("utf-8"))
-
-            on_startup = False
-            previous_menu = -1
+            broadcaster_use('r')
         if keyboard.is_pressed('t'):
-            os.system('clear')
-            print("KEYBOARD KEY [T] PRESSED!")
-
-            sleep(0.25)
-
-            encoded_message = "none,none,2002,none,none,none\n"
-            ser.write(encoded_message.encode("utf-8"))
-
-            on_startup = False
-            previous_menu = -1
+            broadcaster_use('t')
         if keyboard.is_pressed('y'):
-            os.system('clear')
-            print("KEYBOARD KEY [Y] PRESSED!")
-
-            sleep(0.25)
-
-            encoded_message = "none,none,2003,none,none,none\n"
-            ser.write(encoded_message.encode("utf-8"))
-
-            on_startup = False
-            previous_menu = -1
+            broadcaster_use('y')
 
         # Right leg
+        # Untested code
 
         if keyboard.is_pressed('a'):
-            os.system('clear')
-            print("KEYBOARD KEY [A] PRESSED!")
-
-            sleep(0.25)
-
-            encoded_message = "none,none,none,2002,none,none\n"
-            ser.write(encoded_message.encode("utf-8"))
-
-            on_startup = False
-            previous_menu = -1
+            broadcaster_use('a')
         if keyboard.is_pressed('s'):
-            os.system('clear')
-            print("KEYBOARD KEY [S] PRESSED!")
-
-            sleep(0.25)
-
-            encoded_message = "none,none,none,2003,none,none\n"
-            ser.write(encoded_message.encode("utf-8"))
-
-            on_startup = False
-            previous_menu = -1
+            broadcaster_use('s')
         if keyboard.is_pressed('d'):
-            os.system('clear')
-            print("KEYBOARD KEY [D] PRESSED!")
-
-            sleep(0.25)
-
-            encoded_message = "none,none,none,none,2002,none\n"
-            ser.write(encoded_message.encode("utf-8"))
-
-            on_startup = False
-            previous_menu = -1
+            broadcaster_use('d')
         if keyboard.is_pressed('f'):
-            os.system('clear')
-            print("KEYBOARD KEY [F] PRESSED!")
-
-            sleep(0.25)
-
-            encoded_message = "none,none,none,none,2003,none\n"
-            ser.write(encoded_message.encode("utf-8"))
-
-            on_startup = False
-            previous_menu = -1
+            broadcaster_use('f')
         if keyboard.is_pressed('g'):
-            os.system('clear')
-            print("KEYBOARD KEY [G] PRESSED!")
-
-            sleep(0.25)
-
-            encoded_message = "none,none,none,none,none,2002\n"
-            ser.write(encoded_message.encode("utf-8"))
-
-            on_startup = False
-            previous_menu = -1
+            broadcaster_use('g')
         if keyboard.is_pressed('h'):
-            os.system('clear')
-            print("KEYBOARD KEY [H] PRESSED!")
-
-            sleep(0.25)
-
-            encoded_message = "none,none,none,none,none,2003\n"
-            ser.write(encoded_message.encode("utf-8"))
-
-            on_startup = False
-            previous_menu = -1
+            broadcaster_use('h')
         if keyboard.is_pressed('left'):
             os.system('clear')
             print("RETURNING TO MENU 1")
