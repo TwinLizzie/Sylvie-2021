@@ -59,7 +59,17 @@ ra3R_old = 0
 
 on_startup = True
 
-# Untested code
+def enc_message_one(i):
+    switcher={
+        "4":"2002,none,none,2003,none,none\n",
+        "5":"2003,none,none,2002,none,none\n",
+        "6":"none,2002,none,none,2003,none\n",
+        "7":"none,2003,none,none,2002,none\n",
+        "8":"none,none,2002,none,none,2003\n",
+        "9":"none,none,2003,none,none,2002\n",
+    }
+    return switcher.get(i,"Invalid command")
+
 def enc_message_two(i):
     switcher={
         "q":"2002,none,none,none,none,none\n",
@@ -77,20 +87,26 @@ def enc_message_two(i):
     }
     return switcher.get(i,"Invalid command")
 
-# Untested code
-def broadcaster_use(keyboard_key):
+def show_key(keyboard_key):
     os.system('clear')
-    print("KEYBOARD KEY [" + keyboard_key + "] PRESSED!")
+    print("KEYBOARD KEY [" + keyboard_key + "] PRESSED")
 
     sleep(0.25)
 
-    encoded_command = enc_message_two(keyboard_key)
-    ser.write(encoded_command.encode("utf-8"))
+    global on_startup
+    global previous_menu
 
     on_startup = False
     previous_menu = -1
 
-#def set_ee(val_zL, val_xL, val_zR, val_xR, val_zL_sr, val_zR_zr): 
+def broadcaster_use(keyboard_key, menu_num):
+    if menu_num == 1:
+        encoded_command = enc_message_one(keyboard_key)
+    elif menu_num == 2:
+        encoded_command = enc_message_two(keyboard_key)
+    ser.write(encoded_command.encode("utf-8"))
+
+    show_key(keyboard_key)
 
 while True:
     if menu == 0:
@@ -165,168 +181,58 @@ while True:
         ra2R_old = solvedik_right[1]
         ra3R_old = solvedik_right[2]
 
-        
+        # Keyboard Control
 
         if keyboard.is_pressed('1'):
-            os.system('clear')
-            print("KEYBOARD KEY [1] PRESSED!")
-
-            sleep(0.125)
-
             nanoik.drawRadarSide(solvedik_left[0], solvedik_left[1], solvedik_left[2], link_1, link_2, "blue")
-
-            on_startup = False
-            previous_menu = -1
+            show_key('1')
         elif keyboard.is_pressed('2'):
-            os.system('clear')
-            print("KEYBOARD KEY [2] PRESSED!")
-
-            sleep(0.125)
-
             nanoik.drawRadarSide(solvedik_right[0], solvedik_right[1], solvedik_right[2], link_1, link_2, "red")
-
-            on_startup = False
-            previous_menu = -1
+            show_key('2')
         elif keyboard.is_pressed('3'):
-            os.system('clear')
-            print("KEYBOARD KEY [3] PRESSED!")
-
-            sleep(0.125)
-
             nanoik.drawRadarFront((gbx_sr_all - 100), ee_zL, ee_zR, foot_dist, "green")
-
-            on_startup = False
-            previous_menu = -1
+            show_key('3')
         elif keyboard.is_pressed('w'):
-            os.system('clear')
-            print("KEYBOARD KEY [W] PRESSED!")
-
-            sleep(0.25)
-
             ee_zL = ee_zL - 0.0025
-
-            on_startup = False
-            previous_menu = -1
+            show_key('w')
         elif keyboard.is_pressed('s'):
-            os.system('clear')
-            print("KEYBOARD KEY [S] PRESSED!")
-
-            sleep(0.25)
-
             ee_zL = ee_zL + 0.0025
-
-            on_startup = False
-            previous_menu = -1
+            show_key('s')
         elif keyboard.is_pressed('d'):
-            os.system('clear')
-            print("KEYBOARD KEY [D] PRESSED!")
-
-            sleep(0.25)
-
             ee_xL = ee_xL + 0.0025
-
-            on_startup = False
-            previous_menu = -1
+            show_key('d')
         elif keyboard.is_pressed('a'):
-            os.system('clear')
-            print("KEYBOARD KEY [A] PRESSED!")
-
-            sleep(0.25)
-
             ee_xL = ee_xL - 0.0025
-
-            on_startup = False
-            previous_menu = -1       
+            show_key('a')
         elif keyboard.is_pressed('t'):
-            os.system('clear')
-            print("KEYBOARD KEY [T] PRESSED!")
-
-            sleep(0.25)
-
             ee_zR = ee_zR - 0.0025
-
-            on_startup = False
-            previous_menu = -1
+            show_key('t')
         elif keyboard.is_pressed('g'):
-            os.system('clear')
-            print("KEYBOARD KEY [G] PRESSED!")
-
-            sleep(0.25)
-
             ee_zR = ee_zR + 0.0025
-
-            on_startup = False
-            previous_menu = -1
+            show_key('g')
         elif keyboard.is_pressed('h'):
-            os.system('clear')
-            print("KEYBOARD KEY [H] PRESSED!")
-
-            sleep(0.25)
-
             ee_xR = ee_xR + 0.0025
-
-            on_startup = False
-            previous_menu = -1
+            show_key('h')
         elif keyboard.is_pressed('f'):
-            os.system('clear')
-            print("KEYBOARD KEY [F] PRESSED!")
-
-            sleep(0.25)
-
             ee_xR = ee_xR - 0.0025
-
-            on_startup = False
-            previous_menu = -1    
+            show_key('f')
         elif keyboard.is_pressed('i'):
-            os.system('clear')
-            print("KEYBOARD KEY [I] PRESSED!")
-
-            sleep(0.25)
-
             ee_zL = ee_zL - 0.0025
             ee_zR = ee_zR - 0.0025
-
-            on_startup = False
-            previous_menu = -1
+            show_key('i')
         elif keyboard.is_pressed('k'):
-            os.system('clear')
-            print("KEYBOARD KEY [K] PRESSED!")
-
-            sleep(0.25)
-
             ee_zL = ee_zL + 0.0025
             ee_zR = ee_zR + 0.0025
-
-            on_startup = False
-            previous_menu = -1
+            show_key('k')
         elif keyboard.is_pressed('l'):
-            os.system('clear')
-            print("KEYBOARD KEY [L] PRESSED!")
-
-            sleep(0.25)
-
             ee_xL = ee_xL + 0.0025
             ee_xR = ee_xR + 0.0025
-
-            on_startup = False
-            previous_menu = -1
+            show_key('l')
         elif keyboard.is_pressed('j'):
-            os.system('clear')
-            print("KEYBOARD KEY [J] PRESSED!")
-
-            sleep(0.25)
-
             ee_xL = ee_xL - 0.0025
             ee_xR = ee_xR - 0.0025
-
-            on_startup = False
-            previous_menu = -1
+            show_key('j')
         elif keyboard.is_pressed('z'):
-            os.system('clear')
-            print("KEYBOARD KEY [Z] PRESSED!")
-
-            sleep(0.25)
-
             ee_zL = ee_zL - 0.0025
             ee_zR = ee_zR + 0.0025
 
@@ -334,15 +240,8 @@ while True:
             ee_zR_sr = ee_zR_sr + 0.0025
 
             gbx_sr_all = 100 + nanoik.solveKinematicsFront(ee_zL_sr, ee_zR_sr, foot_dist)
-
-            on_startup = False
-            previous_menu = -1  
+            show_key('z')  
         elif keyboard.is_pressed('x'):
-            os.system('clear')
-            print("KEYBOARD KEY [X] PRESSED!")
-
-            sleep(0.25)
-
             ee_zL = ee_zL + 0.0025
             ee_zR = ee_zR - 0.0025
 
@@ -350,96 +249,26 @@ while True:
             ee_zR_sr = ee_zR_sr - 0.0025
 
             gbx_sr_all = 100 + nanoik.solveKinematicsFront(ee_zL_sr, ee_zR_sr, foot_dist)
-
-            on_startup = False
-            previous_menu = -1 
+            show_key('x')
         elif keyboard.is_pressed('c'):
-            os.system('clear')
-            print("KEYBOARD KEY [C] PRESSED!")
-
-            sleep(0.25)
-
             gbx_waist = gbx_waist + 0.5
-
-            on_startup = False
-            previous_menu = -1  
+            show_key('c')
         elif keyboard.is_pressed('v'):
-            os.system('clear')
-            print("KEYBOARD KEY [V] PRESSED!")
-
-            sleep(0.25)
-
             gbx_waist = gbx_waist - 0.5
-
-            on_startup = False
-            previous_menu = -1
+            show_key('v')
         elif keyboard.is_pressed('4'):
-            os.system('clear')
-            print("KEYBOARD KEY [4] PRESSED!")
-
-            sleep(0.25)
-
-            encoded_message = "2002,none,none,2003,none,none\n"
-            ser.write(encoded_message.encode("utf-8"))
-
-            on_startup = False
-            previous_menu = -1
+            broadcaster_use('4', 1)
         elif keyboard.is_pressed('5'):
-            os.system('clear')
-            print("KEYBOARD KEY [5] PRESSED!")
-
-            sleep(0.25)
-
-            encoded_message = "2003,none,none,2002,none,none\n"
-            ser.write(encoded_message.encode("utf-8"))
-
-            on_startup = False
-            previous_menu = -1                          
+            broadcaster_use('5', 1)                         
         elif keyboard.is_pressed('6'):
-            os.system('clear')
-            print("KEYBOARD KEY [6] PRESSED!")
-
-            sleep(0.25)
-
-            encoded_message = "none,2002,none,none,2003,none\n"
-            ser.write(encoded_message.encode("utf-8"))
-
-            on_startup = False
-            previous_menu = -1
+            broadcaster_use('6', 1)
         elif keyboard.is_pressed('7'):
-            os.system('clear')
-            print("KEYBOARD KEY [7] PRESSED!")
-
-            sleep(0.25)
-
-            encoded_message = "none,2003,none,none,2002,none\n"
-            ser.write(encoded_message.encode("utf-8"))
-
-            on_startup = False
-            previous_menu = -1
+            broadcaster_use('7', 1)
         elif keyboard.is_pressed('8'):
-            os.system('clear')
-            print("KEYBOARD KEY [8] PRESSED!")
-
-            sleep(0.25)
-
-            encoded_message = "none,none,2002,none,none,2003\n"
-            ser.write(encoded_message.encode("utf-8"))
-
-            on_startup = False
-            previous_menu = -1
+            broadcaster_use('8', 1)
         elif keyboard.is_pressed('9'):
-            os.system('clear')
-            print("KEYBOARD KEY [9] PRESSED!")
-
-            sleep(0.25)
-
-            encoded_message = "none,none,2003,none,none,2002\n"
-            ser.write(encoded_message.encode("utf-8"))
-
-            on_startup = False
-            previous_menu = -1  
-    if keyboard.is_pressed('right'):
+            broadcaster_use('9', 1)  
+        elif keyboard.is_pressed('right'):
             os.system('clear')
             print("NAVIGATING TO MENU 2")
 
@@ -447,7 +276,8 @@ while True:
 
             on_startup = False
             menu = 2
-            previous_menu = -1
+            previous_menu
+
     elif menu == 2:
         if menu != previous_menu:
             os.system('clear')    
@@ -458,37 +288,35 @@ while True:
             previous_menu = menu
 
         # Left leg
-        # Untested code
 
         if keyboard.is_pressed('q'):
-            broadcaster_use('q')
-        if keyboard.is_pressed('w'):
-            broadcaster_use('w')
-        if keyboard.is_pressed('e'):
-            broadcaster_use('e')
-        if keyboard.is_pressed('r'):
-            broadcaster_use('r')
-        if keyboard.is_pressed('t'):
-            broadcaster_use('t')
-        if keyboard.is_pressed('y'):
-            broadcaster_use('y')
+            broadcaster_use('q', 2)
+        elif keyboard.is_pressed('w'):
+            broadcaster_use('w', 2)
+        elif keyboard.is_pressed('e'):
+            broadcaster_use('e', 2)
+        elif keyboard.is_pressed('r'):
+            broadcaster_use('r', 2)
+        elif keyboard.is_pressed('t'):
+            broadcaster_use('t', 2)
+        elif keyboard.is_pressed('y'):
+            broadcaster_use('y', 2)
 
         # Right leg
-        # Untested code
 
-        if keyboard.is_pressed('a'):
-            broadcaster_use('a')
-        if keyboard.is_pressed('s'):
-            broadcaster_use('s')
-        if keyboard.is_pressed('d'):
-            broadcaster_use('d')
-        if keyboard.is_pressed('f'):
-            broadcaster_use('f')
-        if keyboard.is_pressed('g'):
-            broadcaster_use('g')
-        if keyboard.is_pressed('h'):
-            broadcaster_use('h')
-        if keyboard.is_pressed('left'):
+        elif keyboard.is_pressed('a'):
+            broadcaster_use('a', 2)
+        elif keyboard.is_pressed('s'):
+            broadcaster_use('s', 2)
+        elif keyboard.is_pressed('d'):
+            broadcaster_use('d', 2)
+        elif keyboard.is_pressed('f'):
+            broadcaster_use('f', 2)
+        elif keyboard.is_pressed('g'):
+            broadcaster_use('g', 2)
+        elif keyboard.is_pressed('h'):
+            broadcaster_use('h', 2)
+        elif keyboard.is_pressed('left'):
             os.system('clear')
             print("RETURNING TO MENU 1")
 

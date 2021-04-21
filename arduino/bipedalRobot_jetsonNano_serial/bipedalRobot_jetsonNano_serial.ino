@@ -1,7 +1,6 @@
 #include <Wire.h>
 
 String serialState = "";
-int stepperState = 0;
 char gbxValues[] = "";
 char *gbxName = NULL;
 
