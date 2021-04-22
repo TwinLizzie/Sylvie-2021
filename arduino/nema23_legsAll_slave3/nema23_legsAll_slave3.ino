@@ -12,7 +12,7 @@
 FastAccelStepperEngine engine = FastAccelStepperEngine();
 FastAccelStepper *stepper = NULL;
 
-int i2cAddress = 0x20;
+int i2cAddress = 0x12;
 
 int bevelGear = (49 / 12);
 int gearRatio = 53.575757576;
@@ -43,7 +43,7 @@ void setup() {
     stepper->setEnablePin(enablePinStepper);
     stepper->setAutoEnable(true);
 
-    stepper->setSpeed(250);       // the parameter is us/step !!!
+    stepper->setSpeedInUs(250);       // the parameter is us/step !!!
     stepper->setAcceleration(15000);
   }
 }
@@ -75,58 +75,58 @@ void loop() {
 
   if (wireState > 0) {
     if (wireState == 2000) {
-      stepper->setSpeed(250);       // the parameter is us/step !!!
+      stepper->setSpeedInUs(250);       // the parameter is us/step !!!
       stepper->setAcceleration(15000);
       stepper->move(1 * formula);
       currentAngle++;
       wireState = 0;
     }
     else if (wireState == 2001) {
-      stepper->setSpeed(250);       // the parameter is us/step !!!
+      stepper->setSpeedInUs(250);       // the parameter is us/step !!!
       stepper->setAcceleration(15000);
       stepper->move(-1 * formula);
       currentAngle--;
       wireState = 0;
     }
     else if (wireState == 2002) {
-      stepper->setSpeed(250);       // the parameter is us/step !!!
+      stepper->setSpeedInUs(250);       // the parameter is us/step !!!
       stepper->setAcceleration(15000);
       stepper->move(1 * formula);
       wireState = 0;
     }
     else if (wireState == 2003) {
-      stepper->setSpeed(250);       // the parameter is us/step !!!
+      stepper->setSpeedInUs(250);       // the parameter is us/step !!!
       stepper->setAcceleration(15000);
       stepper->move(-1 * formula);
       wireState = 0;
     }
     else if (wireState == 2004) {
-      stepper->setSpeed(250);       // the parameter is us/step !!!
+      stepper->setSpeedInUs(250);       // the parameter is us/step !!!
       stepper->setAcceleration(15000);
       stepper->move(450 * formula);
       wireState = 0;
     }
     else if (wireState == 2005) {
-      stepper->setSpeed(250);       // the parameter is us/step !!!
+      stepper->setSpeedInUs(250);       // the parameter is us/step !!!
       stepper->setAcceleration(15000);
       stepper->move(-450 * formula);
       wireState = 0;
     }
     else if (wireState == 2006) {
-      stepper->setSpeed(2000);       // the parameter is us/step !!!
+      stepper->setSpeedInUs(2000);       // the parameter is us/step !!!
       stepper->setAcceleration(20000);
       stepper->move(1 * formula);
       wireState = 0;
     }
     else if (wireState == 2007) {
-      stepper->setSpeed(2000);       // the parameter is us/step !!!
+      stepper->setSpeedInUs(2000);       // the parameter is us/step !!!
       stepper->setAcceleration(20000);
       stepper->move(-1 * formula);
       wireState = 0;
     }
     else if (wireState > 0 && wireState < 2000) {
       newAngle = (wireState - currentAngle);
-      stepper->setSpeed(250);       // the parameter is us/step !!!
+      stepper->setSpeedInUs(250);       // the parameter is us/step !!!
       stepper->setAcceleration(15000);
       stepper->move(newAngle * formula);  //Move X times revolutions, according to gear reduction ratio.
       currentAngle = wireState;

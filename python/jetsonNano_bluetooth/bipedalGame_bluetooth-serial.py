@@ -197,56 +197,56 @@ while True:
 
         # Keyboard Control
 
-        if keyboard.is_pressed('1'):
+        if str(res)[2] == '1':
             nanoik.drawRadarSide(solvedik_left[0], solvedik_left[1], solvedik_left[2], link_1, link_2, "blue")
             show_key('1')
-        elif keyboard.is_pressed('2'):
+        elif str(res)[2] == '2':
             nanoik.drawRadarSide(solvedik_right[0], solvedik_right[1], solvedik_right[2], link_1, link_2, "red")
             show_key('2')
-        elif keyboard.is_pressed('3'):
+        elif str(res)[2] == '3':
             nanoik.drawRadarFront((gbx_sr_all - 100), ee_zL, ee_zR, foot_dist, "green")
             show_key('3')
-        elif keyboard.is_pressed('w'):
+        elif str(res)[2] == 'w':
             ee_zL = ee_zL - 0.0025
             show_key('w')
-        elif keyboard.is_pressed('s'):
+        elif str(res)[2] == 's':
             ee_zL = ee_zL + 0.0025
             show_key('s')
-        elif keyboard.is_pressed('d'):
+        elif str(res)[2] == 'd':
             ee_xL = ee_xL + 0.0025
             show_key('d')
-        elif keyboard.is_pressed('a'):
+        elif str(res)[2] == 'a':
             ee_xL = ee_xL - 0.0025
             show_key('a')
-        elif keyboard.is_pressed('t'):
+        elif str(res)[2] == 't':
             ee_zR = ee_zR - 0.0025
             show_key('t')
-        elif keyboard.is_pressed('g'):
+        elif str(res)[2] == 'g':
             ee_zR = ee_zR + 0.0025
             show_key('g')
-        elif keyboard.is_pressed('h'):
+        elif str(res)[2] == 'h':
             ee_xR = ee_xR + 0.0025
             show_key('h')
-        elif keyboard.is_pressed('f'):
+        elif str(res)[2] == 'f':
             ee_xR = ee_xR - 0.0025
             show_key('f')
-        elif keyboard.is_pressed('i'):
+        elif str(res)[2] == 'i':
             ee_zL = ee_zL - 0.0025
             ee_zR = ee_zR - 0.0025
             show_key('i')
-        elif keyboard.is_pressed('k'):
+        elif str(res)[2] == 'k':
             ee_zL = ee_zL + 0.0025
             ee_zR = ee_zR + 0.0025
             show_key('k')
-        elif keyboard.is_pressed('l'):
+        elif str(res)[2] == 'l':
             ee_xL = ee_xL + 0.0025
             ee_xR = ee_xR + 0.0025
             show_key('l')
-        elif keyboard.is_pressed('j'):
+        elif str(res)[2] == 'j':
             ee_xL = ee_xL - 0.0025
             ee_xR = ee_xR - 0.0025
             show_key('j')
-        elif keyboard.is_pressed('z'):
+        elif str(res)[2] == 'z':
             ee_zL = ee_zL - 0.0025
             ee_zR = ee_zR + 0.0025
 
@@ -255,7 +255,7 @@ while True:
 
             gbx_sr_all = 100 + nanoik.solveKinematicsFront(ee_zL_sr, ee_zR_sr, foot_dist)
             show_key('z')  
-        elif keyboard.is_pressed('x'):
+        elif str(res)[2] == 'x':
             ee_zL = ee_zL + 0.0025
             ee_zR = ee_zR - 0.0025
 
@@ -264,25 +264,25 @@ while True:
 
             gbx_sr_all = 100 + nanoik.solveKinematicsFront(ee_zL_sr, ee_zR_sr, foot_dist)
             show_key('x')
-        elif keyboard.is_pressed('c'):
+        elif str(res)[2] == 'c':
             gbx_waist = gbx_waist + 0.5
             show_key('c')
-        elif keyboard.is_pressed('v'):
+        elif str(res)[2] == 'v':
             gbx_waist = gbx_waist - 0.5
             show_key('v')
-        elif keyboard.is_pressed('4'):
+        elif str(res)[2] == '4':
             broadcaster_use('4', 1)
-        elif keyboard.is_pressed('5'):
+        elif str(res)[2] == '5':
             broadcaster_use('5', 1)                         
-        elif keyboard.is_pressed('6'):
+        elif str(res)[2] == '6':
             broadcaster_use('6', 1)
-        elif keyboard.is_pressed('7'):
+        elif str(res)[2] == '7':
             broadcaster_use('7', 1)
-        elif keyboard.is_pressed('8'):
+        elif str(res)[2] == '8':
             broadcaster_use('8', 1)
-        elif keyboard.is_pressed('9'):
+        elif str(res)[2] == '9':
             broadcaster_use('9', 1)  
-        elif keyboard.is_pressed('right'):
+        elif str(res)[2] == 'right':
             os.system('clear')
             print("NAVIGATING TO MENU 2")
 
@@ -303,34 +303,34 @@ while True:
 
         # Left leg
 
-        if keyboard.is_pressed('q'):
+        if str(res)[2] == 'q':
             broadcaster_use('q', 2)
-        elif keyboard.is_pressed('w'):
+        elif str(res)[2] == 'w':
             broadcaster_use('w', 2)
-        elif keyboard.is_pressed('e'):
+        elif str(res)[2] == 'e':
             broadcaster_use('e', 2)
-        elif keyboard.is_pressed('r'):
+        elif str(res)[2] == 'r':
             broadcaster_use('r', 2)
-        elif keyboard.is_pressed('t'):
+        elif str(res)[2] == 't':
             broadcaster_use('t', 2)
-        elif keyboard.is_pressed('y'):
+        elif str(res)[2] == 'y':
             broadcaster_use('y', 2)
 
         # Right leg
 
-        elif keyboard.is_pressed('a'):
+        elif str(res)[2] == 'a':
             broadcaster_use('a', 2)
-        elif keyboard.is_pressed('s'):
+        elif str(res)[2] == 's':
             broadcaster_use('s', 2)
-        elif keyboard.is_pressed('d'):
+        elif str(res)[2] == 'd':
             broadcaster_use('d', 2)
-        elif keyboard.is_pressed('f'):
+        elif str(res)[2] == 'f':
             broadcaster_use('f', 2)
-        elif keyboard.is_pressed('g'):
+        elif str(res)[2] == 'g':
             broadcaster_use('g', 2)
-        elif keyboard.is_pressed('h'):
+        elif str(res)[2] == 'h':
             broadcaster_use('h', 2)
-        elif keyboard.is_pressed('left'):
+        elif str(res)[2] == 'left':
             os.system('clear')
             print("RETURNING TO MENU 1")
 
@@ -339,3 +339,6 @@ while True:
             on_startup = False
             menu = 1
             previous_menu = -1
+
+client_socket.close()
+server_socket.close()
