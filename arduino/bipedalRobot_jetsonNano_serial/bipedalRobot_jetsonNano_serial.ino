@@ -4,6 +4,9 @@ String serialState = "";
 char gbxValues[] = "";
 char *gbxName = NULL;
 
+int SRtopR_address = 0x11;
+int SRtopL_address = 0x12;
+
 int L1_address = 0x13;
 int L2_address = 0x15;
 int L3_address = 0x17;
@@ -11,6 +14,9 @@ int L3_address = 0x17;
 int R1_address = 0x14;
 int R2_address = 0x16;
 int R3_address = 0x18;
+
+int SRbotR_address = 0x19;
+int SRbotL_address = 0x20;
 
 void setup(){
   Serial.begin(9600);
@@ -75,6 +81,8 @@ void loop(){
     Serial.print(", ");
     Serial.println(R3_gbx);
 
+    moveGearbox(SRtopR_gbx, SRtopR_address);
+    moveGearbox(SRtopL_gbx, SRtopL_address);
     moveGearbox(L1_gbx, L1_address);
     moveGearbox(L2_gbx, L2_address);
     moveGearbox(L3_gbx, L3_address);

@@ -3,6 +3,7 @@
 import sys
 # insert at 1, 0 is the script path (or '' in REPL)
 sys.path.insert(1, '../inverse_kinematics')
+sys.path.insert(1, '../registry')
 
 from time import sleep
 import serial
@@ -11,6 +12,7 @@ import bluetooth
 import os
 
 import nanoik_v2 as nanoik
+import bipedalGame_data as bipedalGame
 
 server_socket=bluetooth.BluetoothSocket( bluetooth.RFCOMM )
 port = 1
@@ -62,33 +64,9 @@ ra3R_old = 0
 
 on_startup = True
 
-def enc_message_one(i):
-    switcher={
-        "4":"2002,none,none,2003,none,none\n",
-        "5":"2003,none,none,2002,none,none\n",
-        "6":"none,2002,none,none,2003,none\n",
-        "7":"none,2003,none,none,2002,none\n",
-        "8":"none,none,2002,none,none,2003\n",
-        "9":"none,none,2003,none,none,2002\n",
-    }
-    return switcher.get(i,"Invalid command")
-
-def enc_message_two(i):
-    switcher={
-        "q":"2002,none,none,none,none,none\n",
-        "w":"2003,none,none,none,none,none\n",
-        "e":"none,2002,none,none,none,none\n",
-        "r":"none,2003,none,none,none,none\n",
-        "t":"none,none,2002,none,none,none\n",
-        "y":"none,none,2003,none,none,none\n",
-        "a":"none,none,none,2002,none,none\n",
-        "s":"none,none,none,2003,none,none\n",
-        "d":"none,none,none,none,2002,none\n",
-        "f":"none,none,none,none,2003,none\n",
-        "g":"none,none,none,none,none,2002\n",
-        "h":"none,none,none,none,none,2003\n",
-    }
-    return switcher.get(i,"Invalid command")
+def quickRnd(val):
+    newVal = str(int(round((val * 10), 1)))
+    return newVal
 
 def show_key(keyboard_key):
     os.system('clear')
@@ -104,9 +82,9 @@ def show_key(keyboard_key):
 
 def broadcaster_use(keyboard_key, menu_num):
     if menu_num == 1:
-        encoded_command = enc_message_one(keyboard_key)
+        encoded_command = bipedalGame.enc_message_one(keyboard_key)
     elif menu_num == 2:
-        encoded_command = enc_message_two(keyboard_key)
+        encoded_command = bipedalGame.enc_message_two(keyboard_key)
     ser.write(encoded_command.encode("utf-8"))
 
     show_key(keyboard_key)
@@ -165,7 +143,7 @@ while True:
                 gbx_R2 = gbx_R2 + (ra2R_old - solvedik_right[1])
                 gbx_R3 = gbx_R3 + (ra3R_old - solvedik_right[2])
 
-                encoded_command = str(int(round((gbx_L1 * 10), 1))) + "," + str(int(round((gbx_L2 * 10), 1))) + "," + str(int(round((gbx_L3 * 10), 1))) + "," + str(int(round((gbx_R1 * 10), 1))) + "," + str(int(round((gbx_R2 * 10), 1))) + "," + str(int(round((gbx_R3 * 10), 1))) + "\n"
+                encoded_command = "none,none," + quickRnd(gbx_L1) + "," + quickRnd(gbx_L2) + "," + quickRnd(gbx_L3) + "," + quickRnd(gbx_R1) + "," + quickRnd(gbx_R2) + "," + quickRnd(gbx_R3) + ",none,none\n"
 
                 ser.write(encoded_command.encode("utf-8"))
 
@@ -173,17 +151,16 @@ while True:
 
             os.system('clear')
 
-            print("Current left leg angles: ", str(int(round((gbx_L1 * 10), 1))), str(int(round((gbx_L2 * 10), 1))), str(int(round((gbx_L3 * 10), 1))))
-            print("Current right leg angles: ", str(int(round((gbx_R1 * 10), 1))), str(int(round((gbx_R2 * 10), 1))), str(int(round((gbx_R3 * 10), 1))))
-            print("")
-            print("Left Leg End Effector position: ", round(ee_zL, 3), round(ee_xL, 3))
-            print("Right Leg End Effector position: ", round(ee_zR, 3), round(ee_xR, 3))
-            print("")
-            print("Current rocking joints angles: ", str(int(round((gbx_sr_all * 10), 1))))
-            print("Current waist joint angle: ", str(int(round((gbx_waist * 10), 1))))
-            print("Current encoded command: ", encoded_command)
-            print("")
-            print("Use WASD,TFGH,IJKL,ZX,CV to move the lower body.")
+            l_leg_angles = [quickRnd(gbx_L1), quickRnd(gbx_L2), quickRnd(gbx_L3)]
+            r_leg_angles = [quickRnd(gbx_R1), quickRnd(gbx_R2), quickRnd(gbx_R3)]
+
+            l_ee_pos = round(ee_zL, 3), round(ee_xL, 3)
+            r_ee_pos = round(ee_zR, 3), round(ee_xR, 3)
+
+            sr_angles = str(int(round((gbx_sr_all * 10), 1)))
+            waist_angle = str(int(round((gbx_waist * 10), 1)))
+     
+            bipedalGame.menuOneText(r_leg_angles, l_leg_angles, l_ee_pos, r_ee_pos, sr_angles, waist_angle, encoded_command)
 
             previous_menu = menu
 
@@ -270,6 +247,10 @@ while True:
         elif str(res)[2] == 'v':
             gbx_waist = gbx_waist - 0.5
             show_key('v')
+        elif str(res)[2] == 'b':
+            broadcaster_use('b', 1)
+        elif str(res)[2] == 'n':
+            broadcaster_use('n', 1)
         elif str(res)[2] == '4':
             broadcaster_use('4', 1)
         elif str(res)[2] == '5':
@@ -330,6 +311,22 @@ while True:
             broadcaster_use('g', 2)
         elif str(res)[2] == 'h':
             broadcaster_use('h', 2)
+        elif str(res)[2] == 'u':
+            broadcaster_use('u', 2)
+        elif str(res)[2] == 'i':
+            broadcaster_use('i', 2)
+        elif str(res)[2] == 'z':
+            broadcaster_use('z', 2)
+        elif str(res)[2] == 'x':
+            broadcaster_use('x', 2)
+        elif str(res)[2] == 'c':
+            broadcaster_use('c', 2)
+        elif str(res)[2] == 'v':
+            broadcaster_use('v', 2)
+        elif str(res)[2] == 'b':
+            broadcaster_use('b', 2)
+        elif str(res)[2] == 'n':
+            beoadcaster_use('n', 2)
         elif str(res)[2] == 'left':
             os.system('clear')
             print("RETURNING TO MENU 1")
