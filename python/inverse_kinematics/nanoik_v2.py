@@ -129,10 +129,10 @@ def drawRadarSide(meta_a, meta_b, meta_c, lnk1, lnk2, pencol):
     board.forward(40)
 
     board.left(meta_a)
-    board.forward(lnk1 * 300)
+    board.forward(lnk1 * 3)
 
     board.right(meta_b)
-    board.forward(lnk2 * 300)
+    board.forward(lnk2 * 3)
 
     board.left(meta_c)
     board.forward(40)
@@ -147,18 +147,16 @@ def drawRadarFront(foot_angle, eezL, eezR, foot_dist, pencol):
     board.forward(40)
 
     board.left(90 - foot_angle)
-    board.forward((0.115 + eezR) * 300)
+    board.forward((0.115 + eezR) * 3)
 
     board.right(90)
-    board.forward(foot_dist * 300)
+    board.forward(foot_dist * 3)
 
     board.right(90)
-    board.forward((0.115 + eezL) * 300)
+    board.forward((0.115 + eezL) * 3)
 
     board.right(90 - foot_angle)
     board.forward(40)
-
-    turtle.done()
 
 # print(solveKinematics(eez, eex, lnk1, lnk2))
 # print(solveKinematicsFront(eezL, eezR, foot_dist))

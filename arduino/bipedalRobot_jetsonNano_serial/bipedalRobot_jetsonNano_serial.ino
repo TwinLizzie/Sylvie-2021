@@ -60,27 +60,26 @@ void moveGearbox(int gbx_v, int gbx_add){
 void loop(){
   if (Serial.available() > 0){
     serialState = Serial.readStringUntil('\n');    
-    
-    int L1_gbx = getValue(serialState,',',0).toInt();
-    int L2_gbx = getValue(serialState,',',1).toInt();
-    int L3_gbx = getValue(serialState,',',2).toInt();
-    int R1_gbx = getValue(serialState,',',3).toInt();
-    int R2_gbx = getValue(serialState,',',4).toInt();
-    int R3_gbx = getValue(serialState,',',5).toInt();
-    
-    Serial.print("Received Gearbox Values: ");
-    Serial.print(L1_gbx);
-    Serial.print(", ");
-    Serial.print(L2_gbx);
-    Serial.print(", ");
-    Serial.print(L3_gbx);
-    Serial.print(", ");
-    Serial.print(R1_gbx);
-    Serial.print(", ");
-    Serial.print(R2_gbx);
-    Serial.print(", ");
-    Serial.println(R3_gbx);
 
+    int SRtopR_gbx = getValue(serialState,',',0).toInt();
+    int SRtopL_gbx = getValue(serialState,',',1).toInt();    
+    int L1_gbx = getValue(serialState,',',2).toInt();
+    int L2_gbx = getValue(serialState,',',3).toInt();
+    int L3_gbx = getValue(serialState,',',4).toInt();
+    int R1_gbx = getValue(serialState,',',5).toInt();
+    int R2_gbx = getValue(serialState,',',6).toInt();
+    int R3_gbx = getValue(serialState,',',7).toInt();
+    int SRbotR_gbx = getValue(serialState,',',8).toInt();
+    int SRbotL_gbx = getValue(serialState,',',9).toInt();        
+
+    int gbxArray[10] = {SRtopR_gbx, SRtopL_gbx, L1_gbx, L2_gbx, L3_gbx, R1_gbx, R2_gbx, R3_gbx, SRbotR_gbx, SRbotL_gbx};
+
+    for(int i = 0; i < 10; i++){
+      Serial.print(gbxArray[i]);
+      Serial.print(",");
+    }
+    Serial.println();    
+    
     moveGearbox(SRtopR_gbx, SRtopR_address);
     moveGearbox(SRtopL_gbx, SRtopL_address);
     moveGearbox(L1_gbx, L1_address);
@@ -89,5 +88,7 @@ void loop(){
     moveGearbox(R1_gbx, R1_address);
     moveGearbox(R2_gbx, R2_address);
     moveGearbox(R3_gbx, R3_address);
+    moveGearbox(SRbotR_gbx, SRbotR_address);
+    moveGearbox(SRbotL_gbx, SRbotL_address);    
   }
 }

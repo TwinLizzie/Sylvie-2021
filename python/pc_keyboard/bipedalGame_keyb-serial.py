@@ -3,6 +3,7 @@
 import sys
 # insert at 1, 0 is the script path (or '' in REPL)
 sys.path.insert(1, '../inverse_kinematics')
+sys.path.insert(1, '../registry')
 
 from time import sleep
 import serial
@@ -10,6 +11,7 @@ import keyboard
 import os
 
 import nanoik_v2 as nanoik
+import bipedalGame_data as bipedalGame
 
 ser = serial.Serial('/dev/ttyUSB0', 9600)
 
@@ -59,33 +61,9 @@ ra3R_old = 0
 
 on_startup = True
 
-def enc_message_one(i):
-    switcher={
-        "4":"2002,none,none,2003,none,none\n",
-        "5":"2003,none,none,2002,none,none\n",
-        "6":"none,2002,none,none,2003,none\n",
-        "7":"none,2003,none,none,2002,none\n",
-        "8":"none,none,2002,none,none,2003\n",
-        "9":"none,none,2003,none,none,2002\n",
-    }
-    return switcher.get(i,"Invalid command")
-
-def enc_message_two(i):
-    switcher={
-        "q":"2002,none,none,none,none,none\n",
-        "w":"2003,none,none,none,none,none\n",
-        "e":"none,2002,none,none,none,none\n",
-        "r":"none,2003,none,none,none,none\n",
-        "t":"none,none,2002,none,none,none\n",
-        "y":"none,none,2003,none,none,none\n",
-        "a":"none,none,none,2002,none,none\n",
-        "s":"none,none,none,2003,none,none\n",
-        "d":"none,none,none,none,2002,none\n",
-        "f":"none,none,none,none,2003,none\n",
-        "g":"none,none,none,none,none,2002\n",
-        "h":"none,none,none,none,none,2003\n",
-    }
-    return switcher.get(i,"Invalid command")
+def quickRnd(val):
+    newVal = str(int(round((val * 10), 1)))
+    return newVal
 
 def show_key(keyboard_key):
     os.system('clear')
@@ -101,14 +79,15 @@ def show_key(keyboard_key):
 
 def broadcaster_use(keyboard_key, menu_num):
     if menu_num == 1:
-        encoded_command = enc_message_one(keyboard_key)
+        encoded_command = bipedalGame.enc_message_one(keyboard_key)
     elif menu_num == 2:
-        encoded_command = enc_message_two(keyboard_key)
+        encoded_command = bipedalGame.enc_message_two(keyboard_key)
     ser.write(encoded_command.encode("utf-8"))
 
     show_key(keyboard_key)
 
 while True:
+    
     if menu == 0:
         os.system('clear')
         limb = 0
@@ -144,14 +123,14 @@ while True:
         if menu != previous_menu:
             if on_startup == False:          
                 gbx_L1 = gbx_L1 + (solvedik_left[0] - ra1L_old)
-                gbx_L2 = gbx_L2 + (ra2L_old - solvedik_left[1])
+                gbx_L2 = gbx_L2 + (ra2L_old - solvedik_left[1]) # To reverse motor direction, swap these!
                 gbx_L3 = gbx_L3 + (solvedik_left[2] - ra3L_old)
 
                 gbx_R1 = gbx_R1 + (ra1R_old - solvedik_right[0])
                 gbx_R2 = gbx_R2 + (ra2R_old - solvedik_right[1])
                 gbx_R3 = gbx_R3 + (ra3R_old - solvedik_right[2])
 
-                encoded_command = str(int(round((gbx_L1 * 10), 1))) + "," + str(int(round((gbx_L2 * 10), 1))) + "," + str(int(round((gbx_L3 * 10), 1))) + "," + str(int(round((gbx_R1 * 10), 1))) + "," + str(int(round((gbx_R2 * 10), 1))) + "," + str(int(round((gbx_R3 * 10), 1))) + "\n"
+                encoded_command = "none,none," + quickRnd(gbx_L1) + "," + quickRnd(gbx_L2) + "," + quickRnd(gbx_L3) + "," + quickRnd(gbx_R1) + "," + quickRnd(gbx_R2) + "," + quickRnd(gbx_R3) + ",none,none\n"
 
                 ser.write(encoded_command.encode("utf-8"))
 
@@ -159,17 +138,16 @@ while True:
 
             os.system('clear')
 
-            print("Current left leg angles: ", str(int(round((gbx_L1 * 10), 1))), str(int(round((gbx_L2 * 10), 1))), str(int(round((gbx_L3 * 10), 1))))
-            print("Current right leg angles: ", str(int(round((gbx_R1 * 10), 1))), str(int(round((gbx_R2 * 10), 1))), str(int(round((gbx_R3 * 10), 1))))
-            print("")
-            print("Left Leg End Effector position: ", round(ee_zL, 3), round(ee_xL, 3))
-            print("Right Leg End Effector position: ", round(ee_zR, 3), round(ee_xR, 3))
-            print("")
-            print("Current rocking joints angles: ", str(int(round((gbx_sr_all * 10), 1))))
-            print("Current waist joint angle: ", str(int(round((gbx_waist * 10), 1))))
-            print("Current encoded command: ", encoded_command)
-            print("")
-            print("Use WASD,TFGH,IJKL,ZX,CV to move the lower body.")
+            l_leg_angles = [quickRnd(gbx_L1), quickRnd(gbx_L2), quickRnd(gbx_L3)]
+            r_leg_angles = [quickRnd(gbx_R1), quickRnd(gbx_R2), quickRnd(gbx_R3)]
+
+            l_ee_pos = round(ee_zL, 3), round(ee_xL, 3)
+            r_ee_pos = round(ee_zR, 3), round(ee_xR, 3)
+
+            sr_angles = str(int(round((gbx_sr_all * 10), 1)))
+            waist_angle = str(int(round((gbx_waist * 10), 1)))
+     
+            bipedalGame.menuOneText(l_leg_angles, r_leg_angles, l_ee_pos, r_ee_pos, sr_angles, waist_angle, encoded_command)
 
             previous_menu = menu
 
@@ -193,60 +171,60 @@ while True:
             nanoik.drawRadarFront((gbx_sr_all - 100), ee_zL, ee_zR, foot_dist, "green")
             show_key('3')
         elif keyboard.is_pressed('w'):
-            ee_zL = ee_zL - 0.0025
+            ee_zL = ee_zL - 0.1
             show_key('w')
         elif keyboard.is_pressed('s'):
-            ee_zL = ee_zL + 0.0025
+            ee_zL = ee_zL + 0.1
             show_key('s')
         elif keyboard.is_pressed('d'):
-            ee_xL = ee_xL + 0.0025
+            ee_xL = ee_xL + 0.1
             show_key('d')
         elif keyboard.is_pressed('a'):
-            ee_xL = ee_xL - 0.0025
+            ee_xL = ee_xL - 0.1
             show_key('a')
         elif keyboard.is_pressed('t'):
-            ee_zR = ee_zR - 0.0025
+            ee_zR = ee_zR - 0.1
             show_key('t')
         elif keyboard.is_pressed('g'):
-            ee_zR = ee_zR + 0.0025
+            ee_zR = ee_zR + 0.1
             show_key('g')
         elif keyboard.is_pressed('h'):
-            ee_xR = ee_xR + 0.0025
+            ee_xR = ee_xR + 0.1
             show_key('h')
         elif keyboard.is_pressed('f'):
-            ee_xR = ee_xR - 0.0025
+            ee_xR = ee_xR - 0.1
             show_key('f')
         elif keyboard.is_pressed('i'):
-            ee_zL = ee_zL - 0.0025
-            ee_zR = ee_zR - 0.0025
+            ee_zL = ee_zL - 0.1
+            ee_zR = ee_zR - 0.1
             show_key('i')
         elif keyboard.is_pressed('k'):
-            ee_zL = ee_zL + 0.0025
-            ee_zR = ee_zR + 0.0025
+            ee_zL = ee_zL + 0.1
+            ee_zR = ee_zR + 0.1
             show_key('k')
         elif keyboard.is_pressed('l'):
-            ee_xL = ee_xL + 0.0025
-            ee_xR = ee_xR + 0.0025
+            ee_xL = ee_xL + 0.1
+            ee_xR = ee_xR + 0.1
             show_key('l')
         elif keyboard.is_pressed('j'):
-            ee_xL = ee_xL - 0.0025
-            ee_xR = ee_xR - 0.0025
+            ee_xL = ee_xL - 0.1
+            ee_xR = ee_xR - 0.1
             show_key('j')
         elif keyboard.is_pressed('z'):
-            ee_zL = ee_zL - 0.0025
-            ee_zR = ee_zR + 0.0025
+            ee_zL = ee_zL - 0.1
+            ee_zR = ee_zR + 0.1
 
-            ee_zL_sr = ee_zL_sr - 0.0025
-            ee_zR_sr = ee_zR_sr + 0.0025
+            ee_zL_sr = ee_zL_sr - 0.1
+            ee_zR_sr = ee_zR_sr + 0.1
 
             gbx_sr_all = 100 + nanoik.solveKinematicsFront(ee_zL_sr, ee_zR_sr, foot_dist)
             show_key('z')  
         elif keyboard.is_pressed('x'):
-            ee_zL = ee_zL + 0.0025
-            ee_zR = ee_zR - 0.0025
+            ee_zL = ee_zL + 0.1
+            ee_zR = ee_zR - 0.1
 
-            ee_zL_sr = ee_zL_sr + 0.0025
-            ee_zR_sr = ee_zR_sr - 0.0025
+            ee_zL_sr = ee_zL_sr + 0.1
+            ee_zR_sr = ee_zR_sr - 0.1
 
             gbx_sr_all = 100 + nanoik.solveKinematicsFront(ee_zL_sr, ee_zR_sr, foot_dist)
             show_key('x')
@@ -256,6 +234,10 @@ while True:
         elif keyboard.is_pressed('v'):
             gbx_waist = gbx_waist - 0.5
             show_key('v')
+        elif keyboard.is_pressed('b'):
+            broadcaster_use('b', 1)
+        elif keyboard.is_pressed('n'):
+            broadcaster_use('n', 1)
         elif keyboard.is_pressed('4'):
             broadcaster_use('4', 1)
         elif keyboard.is_pressed('5'):
@@ -316,6 +298,22 @@ while True:
             broadcaster_use('g', 2)
         elif keyboard.is_pressed('h'):
             broadcaster_use('h', 2)
+        elif keyboard.is_pressed('u'):
+            broadcaster_use('u', 2)
+        elif keyboard.is_pressed('i'):
+            broadcaster_use('i', 2)
+        elif keyboard.is_pressed('z'):
+            broadcaster_use('z', 2)
+        elif keyboard.is_pressed('x'):
+            broadcaster_use('x', 2)
+        elif keyboard.is_pressed('c'):
+            broadcaster_use('c', 2)
+        elif keyboard.is_pressed('v'):
+            broadcaster_use('v', 2)
+        elif keyboard.is_pressed('b'):
+            broadcaster_use('b', 2)
+        elif keyboard.is_pressed('n'):
+            broadcaster_use('n', 2)
         elif keyboard.is_pressed('left'):
             os.system('clear')
             print("RETURNING TO MENU 1")

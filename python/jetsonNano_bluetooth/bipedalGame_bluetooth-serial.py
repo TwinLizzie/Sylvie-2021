@@ -326,7 +326,7 @@ while True:
         elif str(res)[2] == 'b':
             broadcaster_use('b', 2)
         elif str(res)[2] == 'n':
-            beoadcaster_use('n', 2)
+            broadcaster_use('n', 2)
         elif str(res)[2] == 'left':
             os.system('clear')
             print("RETURNING TO MENU 1")
