@@ -16,6 +16,7 @@ import bipedalGame_data as bipedalGame
 
 server_socket=bluetooth.BluetoothSocket( bluetooth.RFCOMM )
 port = 1
+
 ser = serial.Serial('/dev/ttyUSB0', 9600)
 
 # n17_sRockL1_address = 0x11
@@ -98,9 +99,7 @@ print("Accepted connection from ",address)
 while True:
     res = client_socket.recv(1024)
     client_socket.send(res)
-    
-    # Under Construction
-    
+        
     if menu == 0:
         os.system('clear')
         limb = 0
@@ -136,7 +135,7 @@ while True:
         if menu != previous_menu:
             if on_startup == False:          
                 gbx_L1 = gbx_L1 + (solvedik_left[0] - ra1L_old)
-                gbx_L2 = gbx_L2 + (ra2L_old - solvedik_left[1])
+                gbx_L2 = gbx_L2 + (ra2L_old - solvedik_left[1]) # To reverse motor direction, swap these!
                 gbx_L3 = gbx_L3 + (solvedik_left[2] - ra3L_old)
 
                 gbx_R1 = gbx_R1 + (ra1R_old - solvedik_right[0])
@@ -160,7 +159,7 @@ while True:
             sr_angles = str(int(round((gbx_sr_all * 10), 1)))
             waist_angle = str(int(round((gbx_waist * 10), 1)))
      
-            bipedalGame.menuOneText(r_leg_angles, l_leg_angles, l_ee_pos, r_ee_pos, sr_angles, waist_angle, encoded_command)
+            bipedalGame.menuOneText(l_leg_angles, r_leg_angles, l_ee_pos, r_ee_pos, sr_angles, waist_angle, encoded_command)
 
             previous_menu = menu
 
@@ -174,70 +173,70 @@ while True:
 
         # Keyboard Control
 
-        if str(res)[2] == '1':
-            nanoik.drawRadarSide(solvedik_left[0], solvedik_left[1], solvedik_left[2], link_1, link_2, "blue")
-            show_key('1')
-        elif str(res)[2] == '2':
-            nanoik.drawRadarSide(solvedik_right[0], solvedik_right[1], solvedik_right[2], link_1, link_2, "red")
-            show_key('2')
-        elif str(res)[2] == '3':
-            nanoik.drawRadarFront((gbx_sr_all - 100), ee_zL, ee_zR, foot_dist, "green")
-            show_key('3')
-        elif str(res)[2] == 'w':
-            ee_zL = ee_zL - 0.0025
+        #if str(res)[2] == '1':
+        #    nanoik.drawRadarSide(solvedik_left[0], solvedik_left[1], solvedik_left[2], link_1, link_2, "blue")
+        #    show_key('1')
+        #elif str(res)[2] == '2':
+        #    nanoik.drawRadarSide(solvedik_right[0], solvedik_right[1], solvedik_right[2], link_1, link_2, "red")
+        #    show_key('2')
+        #elif str(res)[2] == '3':
+        #    nanoik.drawRadarFront((gbx_sr_all - 100), ee_zL, ee_zR, foot_dist, "green")
+        #    show_key('3')
+        if str(res)[2] == 'w':
+            ee_zL = ee_zL - 0.1
             show_key('w')
         elif str(res)[2] == 's':
-            ee_zL = ee_zL + 0.0025
+            ee_zL = ee_zL + 0.1
             show_key('s')
         elif str(res)[2] == 'd':
-            ee_xL = ee_xL + 0.0025
+            ee_xL = ee_xL + 0.1
             show_key('d')
         elif str(res)[2] == 'a':
-            ee_xL = ee_xL - 0.0025
+            ee_xL = ee_xL - 0.1
             show_key('a')
         elif str(res)[2] == 't':
-            ee_zR = ee_zR - 0.0025
+            ee_zR = ee_zR - 0.1
             show_key('t')
         elif str(res)[2] == 'g':
-            ee_zR = ee_zR + 0.0025
+            ee_zR = ee_zR + 0.1
             show_key('g')
         elif str(res)[2] == 'h':
-            ee_xR = ee_xR + 0.0025
+            ee_xR = ee_xR + 0.1
             show_key('h')
         elif str(res)[2] == 'f':
-            ee_xR = ee_xR - 0.0025
+            ee_xR = ee_xR - 0.1
             show_key('f')
         elif str(res)[2] == 'i':
-            ee_zL = ee_zL - 0.0025
-            ee_zR = ee_zR - 0.0025
+            ee_zL = ee_zL - 0.1
+            ee_zR = ee_zR - 0.1
             show_key('i')
         elif str(res)[2] == 'k':
-            ee_zL = ee_zL + 0.0025
-            ee_zR = ee_zR + 0.0025
+            ee_zL = ee_zL + 0.1
+            ee_zR = ee_zR + 0.1
             show_key('k')
         elif str(res)[2] == 'l':
-            ee_xL = ee_xL + 0.0025
-            ee_xR = ee_xR + 0.0025
+            ee_xL = ee_xL + 0.1
+            ee_xR = ee_xR + 0.1
             show_key('l')
         elif str(res)[2] == 'j':
-            ee_xL = ee_xL - 0.0025
-            ee_xR = ee_xR - 0.0025
+            ee_xL = ee_xL - 0.1
+            ee_xR = ee_xR - 0.1
             show_key('j')
         elif str(res)[2] == 'z':
-            ee_zL = ee_zL - 0.0025
-            ee_zR = ee_zR + 0.0025
+            ee_zL = ee_zL - 0.1
+            ee_zR = ee_zR + 0.1
 
-            ee_zL_sr = ee_zL_sr - 0.0025
-            ee_zR_sr = ee_zR_sr + 0.0025
+            ee_zL_sr = ee_zL_sr - 0.1
+            ee_zR_sr = ee_zR_sr + 0.1
 
             gbx_sr_all = 100 + nanoik.solveKinematicsFront(ee_zL_sr, ee_zR_sr, foot_dist)
             show_key('z')  
         elif str(res)[2] == 'x':
-            ee_zL = ee_zL + 0.0025
-            ee_zR = ee_zR - 0.0025
+            ee_zL = ee_zL + 0.1
+            ee_zR = ee_zR - 0.1
 
-            ee_zL_sr = ee_zL_sr + 0.0025
-            ee_zR_sr = ee_zR_sr - 0.0025
+            ee_zL_sr = ee_zL_sr + 0.1
+            ee_zR_sr = ee_zR_sr - 0.1
 
             gbx_sr_all = 100 + nanoik.solveKinematicsFront(ee_zL_sr, ee_zR_sr, foot_dist)
             show_key('x')
@@ -263,7 +262,7 @@ while True:
             broadcaster_use('8', 1)
         elif str(res)[2] == '9':
             broadcaster_use('9', 1)  
-        elif str(res)[2] == 'right':
+        elif str(res)[2] == '2':
             os.system('clear')
             print("NAVIGATING TO MENU 2")
 
@@ -327,7 +326,7 @@ while True:
             broadcaster_use('b', 2)
         elif str(res)[2] == 'n':
             broadcaster_use('n', 2)
-        elif str(res)[2] == 'left':
+        elif str(res)[2] == '1':
             os.system('clear')
             print("RETURNING TO MENU 1")
 
