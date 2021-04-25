@@ -12,7 +12,7 @@
 FastAccelStepperEngine engine = FastAccelStepperEngine();
 FastAccelStepper *stepper = NULL;
 
-int i2cAddress = 0x19;
+int i2cAddress = 0x20;
 
 int bevelGear = (24 / 12);
 int gearRatio = 53.575757576;
@@ -103,27 +103,29 @@ void loop() {
     else if (wireState == 2004) {
       stepper->setSpeedInUs(250);       // the parameter is us/step !!!
       stepper->setAcceleration(15000);
-      stepper->move(450 * formula);
+      stepper->move(10 * formula);
+      currentAngle--;      
       wireState = 0;
     }
     else if (wireState == 2005) {
       stepper->setSpeedInUs(250);       // the parameter is us/step !!!
       stepper->setAcceleration(15000);
-      stepper->move(-450 * formula);
+      stepper->move(-10 * formula);
+      currentAngle--;
       wireState = 0;
     }
     else if (wireState == 2006) {
-      stepper->setSpeedInUs(2000);       // the parameter is us/step !!!
-      stepper->setAcceleration(20000);
-      stepper->move(1 * formula);
+      stepper->setSpeedInUs(250);       // the parameter is us/step !!!
+      stepper->setAcceleration(15000);
+      stepper->move(10 * formula);
       wireState = 0;
     }
     else if (wireState == 2007) {
-      stepper->setSpeedInUs(2000);       // the parameter is us/step !!!
-      stepper->setAcceleration(20000);
-      stepper->move(-1 * formula);
+      stepper->setSpeedInUs(250);       // the parameter is us/step !!!
+      stepper->setAcceleration(15000);
+      stepper->move(-10 * formula);
       wireState = 0;
-    }
+    }    
     else if (wireState > 0 && wireState < 2000) {
       newAngle = (wireState - currentAngle);
       stepper->setSpeedInUs(250);       // the parameter is us/step !!!

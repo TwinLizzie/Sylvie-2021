@@ -171,17 +171,8 @@ while True:
         ra2R_old = solvedik_right[1]
         ra3R_old = solvedik_right[2]
 
-        # Keyboard Control
+        # Bluetooth Control
 
-        #if str(res)[2] == '1':
-        #    nanoik.drawRadarSide(solvedik_left[0], solvedik_left[1], solvedik_left[2], link_1, link_2, "blue")
-        #    show_key('1')
-        #elif str(res)[2] == '2':
-        #    nanoik.drawRadarSide(solvedik_right[0], solvedik_right[1], solvedik_right[2], link_1, link_2, "red")
-        #    show_key('2')
-        #elif str(res)[2] == '3':
-        #    nanoik.drawRadarFront((gbx_sr_all - 100), ee_zL, ee_zR, foot_dist, "green")
-        #    show_key('3')
         if str(res)[2] == 'w':
             ee_zL = ee_zL - 0.1
             show_key('w')
