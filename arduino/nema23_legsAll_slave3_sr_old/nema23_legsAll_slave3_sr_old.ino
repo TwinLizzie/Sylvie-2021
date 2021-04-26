@@ -104,26 +104,24 @@ void loop() {
       stepper->setSpeedInUs(250);       // the parameter is us/step !!!
       stepper->setAcceleration(15000);
       stepper->move(10 * formula);
-      currentAngle--;      
       wireState = 0;
     }
     else if (wireState == 2005) {
       stepper->setSpeedInUs(250);       // the parameter is us/step !!!
       stepper->setAcceleration(15000);
       stepper->move(-10 * formula);
-      currentAngle--;
       wireState = 0;
     }
     else if (wireState == 2006) {
       stepper->setSpeedInUs(250);       // the parameter is us/step !!!
       stepper->setAcceleration(15000);
-      stepper->move(10 * formula);
+      stepper->move(20 * formula);
       wireState = 0;
     }
     else if (wireState == 2007) {
       stepper->setSpeedInUs(250);       // the parameter is us/step !!!
       stepper->setAcceleration(15000);
-      stepper->move(-10 * formula);
+      stepper->move(-20 * formula);
       wireState = 0;
     }    
     else if (wireState > 0 && wireState < 2000) {
