@@ -14,7 +14,7 @@ FastAccelStepper *stepper = NULL;
 
 int i2cAddress = 0x20;
 
-int bevelGear = (24 / 12);
+int bevelGear = 8.56;
 int gearRatio = 53.575757576;
 int stepsPerRev = 20;
 int microsteps = 4;

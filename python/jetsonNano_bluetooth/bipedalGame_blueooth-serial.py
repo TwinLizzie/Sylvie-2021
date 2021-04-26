@@ -40,9 +40,6 @@ ee_xL = 0.001
 ee_zR = 0
 ee_xR = 0.001
 
-ee_zL_sr = 0
-ee_zR_sr = 0
-
 gbx_L1 = 100
 gbx_L2 = 100
 gbx_L3 = 100
@@ -116,21 +113,17 @@ while True:
         print("Protip: 1 meter = 1, 50 centimeters = 0.5. Measure joints from the pivot point/center.")
 
         hypotenuse = float(input("Enter the distance between Joint 1 and Joint 3 i.e. Hypotenuse: "))
-        foot_dist = float(input("Enter the distance between the two foot gearboxes: "))
         link_1 = float(input("Enter the distance between Joint 1 and Joint 2 i.e. Thigh length: "))
         link_2 = float(input("Enter the distance between Joint 2 and Joint 3 i.e. Leg length: "))
 
         if hypotenuse > 0:
             ee_zL = hypotenuse
             ee_zR = hypotenuse
-            ee_zL_sr = hypotenuse
-            ee_zR_sr = hypotenuse
             menu = 1
 
     elif menu == 1:
         solvedik_left = nanoik.solveKinematicsSide(ee_zL, ee_xL, link_1, link_2) 
         solvedik_right = nanoik.solveKinematicsSide(ee_zR, ee_xR, link_1, link_2)
-        # solvedik_front = nanoik.solveKinematicsFront(ee_zL, ee_zR, foot_dist)
 
         if menu != previous_menu:
             if on_startup == False:          
@@ -213,24 +206,7 @@ while True:
             ee_xL = ee_xL - 0.1
             ee_xR = ee_xR - 0.1
             show_key('j')
-        elif str(res)[2] == 'z':
-            ee_zL = ee_zL - 0.1
-            ee_zR = ee_zR + 0.1
 
-            ee_zL_sr = ee_zL_sr - 0.1
-            ee_zR_sr = ee_zR_sr + 0.1
-
-            gbx_sr_all = 100 + nanoik.solveKinematicsFront(ee_zL_sr, ee_zR_sr, foot_dist)
-            show_key('z')  
-        elif str(res)[2] == 'x':
-            ee_zL = ee_zL + 0.1
-            ee_zR = ee_zR - 0.1
-
-            ee_zL_sr = ee_zL_sr + 0.1
-            ee_zR_sr = ee_zR_sr - 0.1
-
-            gbx_sr_all = 100 + nanoik.solveKinematicsFront(ee_zL_sr, ee_zR_sr, foot_dist)
-            show_key('x')
         elif str(res)[2] == 'c':
             gbx_waist = gbx_waist + 0.5
             show_key('c')
@@ -238,8 +214,10 @@ while True:
             gbx_waist = gbx_waist - 0.5
             show_key('v')
         elif str(res)[2] == 'b':
+            gbx_sr_all = gbx_sr_all + 0.1
             broadcaster_use('b', 1)
         elif str(res)[2] == 'n':
+            gbx_sr_all = gbx_sr_all - 0.1
             broadcaster_use('n', 1)
         elif str(res)[2] == '4':
             broadcaster_use('4', 1)

@@ -15,9 +15,6 @@ import bipedalGame_data as bipedalGame
 
 ser = serial.Serial('/dev/ttyUSB0', 9600)
 
-# n17_sRockL1_address = 0x11
-# n17_sRockR1_address = 0x12
-
 # Our global variables
 previous_menu = 0
 menu = 0      
@@ -36,8 +33,8 @@ ee_xL = 0.001
 ee_zR = 0
 ee_xR = 0.001
 
-ee_zL_sr = 0
-ee_zR_sr = 0
+ver_speed = 0.1
+hor_speed = 0.1
 
 gbx_L1 = 100
 gbx_L2 = 100
@@ -104,31 +101,27 @@ while True:
         print("Protip: 1 meter = 1, 50 centimeters = 0.5. Measure joints from the pivot point/center.")
 
         hypotenuse = float(input("Enter the distance between Joint 1 and Joint 3 i.e. Hypotenuse: "))
-        foot_dist = float(input("Enter the distance between the two foot gearboxes: "))
         link_1 = float(input("Enter the distance between Joint 1 and Joint 2 i.e. Thigh length: "))
         link_2 = float(input("Enter the distance between Joint 2 and Joint 3 i.e. Leg length: "))
 
         if hypotenuse > 0:
             ee_zL = hypotenuse
             ee_zR = hypotenuse
-            ee_zL_sr = hypotenuse
-            ee_zR_sr = hypotenuse
             menu = 1
 
     elif menu == 1:
         solvedik_left = nanoik.solveKinematicsSide(ee_zL, ee_xL, link_1, link_2) 
         solvedik_right = nanoik.solveKinematicsSide(ee_zR, ee_xR, link_1, link_2)
-        # solvedik_front = nanoik.solveKinematicsFront(ee_zL, ee_zR, foot_dist)
 
         if menu != previous_menu:
             if on_startup == False:          
                 gbx_L1 = gbx_L1 + (solvedik_left[0] - ra1L_old)
-                gbx_L2 = gbx_L2 + (ra2L_old - solvedik_left[1]) # To reverse motor direction, swap these!
+                gbx_L2 = gbx_L2 + (solvedik_left[1] - ra2L_old) # To reverse motor direction, swap these!
                 gbx_L3 = gbx_L3 + (solvedik_left[2] - ra3L_old)
 
-                gbx_R1 = gbx_R1 + (ra1R_old - solvedik_right[0])
+                gbx_R1 = gbx_R1 + (solvedik_right[0] - ra1R_old)
                 gbx_R2 = gbx_R2 + (ra2R_old - solvedik_right[1])
-                gbx_R3 = gbx_R3 + (ra3R_old - solvedik_right[2])
+                gbx_R3 = gbx_R3 + (solvedik_right[2] - ra3R_old)
 
                 encoded_command = "none,none," + quickRnd(gbx_L1) + "," + quickRnd(gbx_L2) + "," + quickRnd(gbx_L3) + "," + quickRnd(gbx_R1) + "," + quickRnd(gbx_R2) + "," + quickRnd(gbx_R3) + ",none,none\n"
 
@@ -167,67 +160,47 @@ while True:
         elif keyboard.is_pressed('2'):
             nanoik.drawRadarSide(solvedik_right[0], solvedik_right[1], solvedik_right[2], link_1, link_2, "red")
             show_key('2')
-        elif keyboard.is_pressed('3'):
-            nanoik.drawRadarFront((gbx_sr_all - 100), ee_zL, ee_zR, foot_dist, "green")
-            show_key('3')
         elif keyboard.is_pressed('w'):
-            ee_zL = ee_zL - 0.1
+            ee_zL = ee_zL - ver_speed
             show_key('w')
         elif keyboard.is_pressed('s'):
-            ee_zL = ee_zL + 0.1
+            ee_zL = ee_zL + ver_speed
             show_key('s')
         elif keyboard.is_pressed('d'):
-            ee_xL = ee_xL + 0.1
+            ee_xL = ee_xL + hor_speed
             show_key('d')
         elif keyboard.is_pressed('a'):
-            ee_xL = ee_xL - 0.1
+            ee_xL = ee_xL - hor_speed
             show_key('a')
         elif keyboard.is_pressed('t'):
-            ee_zR = ee_zR - 0.1
+            ee_zR = ee_zR - ver_speed
             show_key('t')
         elif keyboard.is_pressed('g'):
-            ee_zR = ee_zR + 0.1
+            ee_zR = ee_zR + ver_speed
             show_key('g')
         elif keyboard.is_pressed('h'):
-            ee_xR = ee_xR + 0.1
+            ee_xR = ee_xR + hor_speed
             show_key('h')
         elif keyboard.is_pressed('f'):
-            ee_xR = ee_xR - 0.1
+            ee_xR = ee_xR - hor_speed
             show_key('f')
         elif keyboard.is_pressed('i'):
-            ee_zL = ee_zL - 0.1
-            ee_zR = ee_zR - 0.1
+            ee_zL = ee_zL - ver_speed
+            ee_zR = ee_zR - ver_speed
             show_key('i')
         elif keyboard.is_pressed('k'):
-            ee_zL = ee_zL + 0.1
-            ee_zR = ee_zR + 0.1
+            ee_zL = ee_zL + ver_speed
+            ee_zR = ee_zR + ver_speed
             show_key('k')
         elif keyboard.is_pressed('l'):
-            ee_xL = ee_xL + 0.1
-            ee_xR = ee_xR + 0.1
+            ee_xL = ee_xL + hor_speed
+            ee_xR = ee_xR + hor_speed
             show_key('l')
         elif keyboard.is_pressed('j'):
-            ee_xL = ee_xL - 0.1
-            ee_xR = ee_xR - 0.1
+            ee_xL = ee_xL - hor_speed
+            ee_xR = ee_xR - hor_speed
             show_key('j')
-        elif keyboard.is_pressed('z'):
-            ee_zL = ee_zL - 0.1
-            ee_zR = ee_zR + 0.1
 
-            ee_zL_sr = ee_zL_sr - 0.1
-            ee_zR_sr = ee_zR_sr + 0.1
-
-            gbx_sr_all = 100 + nanoik.solveKinematicsFront(ee_zL_sr, ee_zR_sr, foot_dist)
-            show_key('z')  
-        elif keyboard.is_pressed('x'):
-            ee_zL = ee_zL + 0.1
-            ee_zR = ee_zR - 0.1
-
-            ee_zL_sr = ee_zL_sr + 0.1
-            ee_zR_sr = ee_zR_sr - 0.1
-
-            gbx_sr_all = 100 + nanoik.solveKinematicsFront(ee_zL_sr, ee_zR_sr, foot_dist)
-            show_key('x')
         elif keyboard.is_pressed('c'):
             gbx_waist = gbx_waist + 0.5
             show_key('c')
@@ -235,8 +208,10 @@ while True:
             gbx_waist = gbx_waist - 0.5
             show_key('v')
         elif keyboard.is_pressed('b'):
+            gbx_sr_all = gbx_sr_all + 0.1
             broadcaster_use('b', 1)
         elif keyboard.is_pressed('n'):
+            gbx_sr_all = gbx_sr_all - 0.1
             broadcaster_use('n', 1)
         elif keyboard.is_pressed('4'):
             broadcaster_use('4', 1)
