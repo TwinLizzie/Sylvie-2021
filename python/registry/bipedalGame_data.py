@@ -4,12 +4,12 @@ def enc_message_one(i):
     switcher={
         "b":"2000,2000,none,none,none,none,none,none,2001,2001\n",
         "n":"2001,2001,none,none,none,none,none,none,2000,2000\n",
-        "4":"none,none,2003,none,none,2003,none,none,none,none\n",
-        "5":"none,none,2002,none,none,2002,none,none,none,none\n",
-        "6":"none,none,none,2002,none,none,2003,none,none,none\n",
-        "7":"none,none,none,2003,none,none,2002,none,none,none\n",
-        "8":"none,none,none,none,2003,none,none,2003,none,none\n",
-        "9":"none,none,none,none,2002,none,none,2002,none,none\n"
+        "4":"none,none,2007,none,none,2007,none,none,none,none\n",
+        "5":"none,none,2006,none,none,2006,none,none,none,none\n",
+        "6":"none,none,none,2006,none,none,2007,none,none,none\n",
+        "7":"none,none,none,2007,none,none,2006,none,none,none\n",
+        "8":"none,none,none,none,2007,none,none,2007,none,none\n",
+        "9":"none,none,none,none,2006,none,none,2006,none,none\n"
     }
     return switcher.get(i,"Invalid command")
 

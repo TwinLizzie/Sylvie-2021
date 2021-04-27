@@ -12,7 +12,7 @@
 FastAccelStepperEngine engine = FastAccelStepperEngine();
 FastAccelStepper *stepper = NULL;
 
-int i2cAddress = 0x18;
+int i2cAddress = 0x14;
 
 int bevelGear = (49 / 12);
 int gearRatio = 53.575757576;
