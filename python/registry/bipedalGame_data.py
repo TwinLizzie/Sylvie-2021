@@ -1,19 +1,24 @@
-# Bipedal robot movement command grid
-
-def enc_message_one(i):
+# Bipedal robot movement command grid   
+    
+version = "2.1" # Program version
+    
+spA = ["0", "2002", "2004", "2006"] # Anticlockwise speeds
+spC = ["0", "2003", "2005", "2007"] # Clockwise speeds
+    
+def angleSet_one(i):
     switcher={
-        "b":"2000,2000,none,none,none,none,none,none,2001,2001\n",
-        "n":"2001,2001,none,none,none,none,none,none,2000,2000\n",
-        "4":"none,none,2007,none,none,2007,none,none,none,none\n",
-        "5":"none,none,2006,none,none,2006,none,none,none,none\n",
-        "6":"none,none,none,2006,none,none,2007,none,none,none\n",
-        "7":"none,none,none,2007,none,none,2006,none,none,none\n",
-        "8":"none,none,none,none,2007,none,none,2007,none,none\n",
-        "9":"none,none,none,none,2006,none,none,2006,none,none\n"
+        "b":"2002,2002,none,none,none,none,none,none,2003,2003\n",
+        "n":"2003,2003,none,none,none,none,none,none,2002,2002\n",
+        "4":"none,none,2003,none,none,2003,none,none,none,none\n",
+        "5":"none,none,2002,none,none,2002,none,none,none,none\n",
+        "6":"none,none,none,2002,none,none,2003,none,none,none\n",
+        "7":"none,none,none,2003,none,none,2002,none,none,none\n",
+        "8":"none,none,none,none,2003,none,none,2003,none,none\n",
+        "9":"none,none,none,none,2002,none,none,2002,none,none\n"
     }
     return switcher.get(i,"Invalid command")
 
-def enc_message_two(i):
+def angleSet_two(i):
     switcher={
         "q":"none,none,2002,none,none,none,none,none,none,none\n",
         "w":"none,none,2003,none,none,none,none,none,none,none\n",
@@ -37,6 +42,18 @@ def enc_message_two(i):
         "n":"none,none,none,none,none,none,none,none,none,2003\n"
     }
     return switcher.get(i,"Invalid command")
+
+def speed_select(key, angleSet, speed):
+
+    if angleSet == 1:
+        replace_a = angleSet_one(key).replace("2002", spA[speed])
+        replace_c = replace_a.replace("2003", spC[speed])
+        
+    elif angleSet == 2:
+        replace_a = angleSet_two(key).replace("2002", spA[speed])
+        replace_c = replace_a.replace("2003", spC[speed])     
+           
+    return replace_c
 
 def menuOneText(l_leg_angles, r_leg_angles, l_ee_pos, r_ee_pos, sr_angles, waist_angle, encoded_command):
     print("Current left leg angles: ", l_leg_angles[0], l_leg_angles[1], l_leg_angles[2])
