@@ -1,6 +1,6 @@
 # Bipedal robot movement command grid   
     
-version = "2.1" # Program version
+version = "2.11" # Program version
     
 spA = ["0", "2002", "2004", "2006"] # Anticlockwise speeds
 spC = ["0", "2003", "2005", "2007"] # Clockwise speeds

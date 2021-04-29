@@ -172,8 +172,8 @@ while True:
                 gbx_R2 = gbx_R2 + (ra2R_old - solvedik_right[1]) # To reverse motor direction, swap these!
                 gbx_R3 = gbx_R3 + (solvedik_right[2] - ra3R_old)
 
-                gbx_sr_L2 = gbx_sr_L2 + (solvedik_front - ra2L_sr_old)
-                gbx_sr_R2 = gbx_sr_R2 + (solvedik_front - ra2R_sr_old)
+                gbx_sr_L2 = gbx_sr_L2 + (ra2L_sr_old - solvedik_front)
+                gbx_sr_R2 = gbx_sr_R2 + (ra2R_sr_old - solvedik_front)
 
                 encoded_command = "none,none," + quickRnd(gbx_L1) + "," + quickRnd(gbx_L2) + "," + quickRnd(gbx_L3) + "," + quickRnd(gbx_R1) + "," + quickRnd(gbx_R2) + "," + quickRnd(gbx_R3) + "," + quickRnd(gbx_sr_L2) + "," + quickRnd(gbx_sr_R2) + "\n"
 
@@ -284,10 +284,8 @@ while True:
             gbx_waist = gbx_waist - 0.5
             show_key('v')
         elif keyboard.is_pressed('b'):
-            gbx_sr_all = gbx_sr_all + 0.1
             broadcaster_use('b', 1)
         elif keyboard.is_pressed('n'):
-            gbx_sr_all = gbx_sr_all - 0.1
             broadcaster_use('n', 1)
         elif keyboard.is_pressed('4'):
             broadcaster_use('4', 1)
