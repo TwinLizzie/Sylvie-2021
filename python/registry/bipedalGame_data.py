@@ -7,8 +7,8 @@ spC = ["0", "2003", "2005", "2007"] # Clockwise speeds
     
 def angleSet_one(i):
     switcher={
-        "b":"2002,2002,none,none,none,none,none,none,2003,2003\n",
-        "n":"2003,2003,none,none,none,none,none,none,2002,2002\n",
+        "b":"2002,2002,none,none,none,none,none,none,none,none\n",
+        "n":"2003,2003,none,none,none,none,none,none,none,none\n",
         "4":"none,none,2003,none,none,2003,none,none,none,none\n",
         "5":"none,none,2002,none,none,2002,none,none,none,none\n",
         "6":"none,none,none,2002,none,none,2003,none,none,none\n",
