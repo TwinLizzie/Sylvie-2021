@@ -4,7 +4,7 @@ import serial
 import keyboard
 import os
 
-ser = serial.Serial('/dev/ttyUSB0', 9600) # Establish the connection on a specific port
+ser = serial.Serial('/dev/ttyUSB0', 115200) # Establish the connection on a specific port
 os.system("stty -echo")
 
 previous_status = "0"
@@ -73,7 +73,23 @@ while True:
     elif keyboard.is_pressed('f'): 	
         write_serial(11, "KEYBOARD KEY [F] PRESSED!")
         sleep(0.25)
-        clear_serial(0)                                                                                      
+        clear_serial(0)
+    elif keyboard.is_pressed('g'): 	
+        write_serial(12, "KEYBOARD KEY [G] PRESSED!")
+        sleep(0.25)
+        clear_serial(0)   
+    elif keyboard.is_pressed('h'): 	
+        write_serial(13, "KEYBOARD KEY [H] PRESSED!")
+        sleep(0.25)
+        clear_serial(0) 
+    elif keyboard.is_pressed('z'): 	
+        write_serial(14, "KEYBOARD KEY [Z] PRESSED!")
+        sleep(0.25)
+        clear_serial(0)   
+    elif keyboard.is_pressed('x'): 	
+        write_serial(15, "KEYBOARD KEY [X] PRESSED!")
+        sleep(0.25)
+        clear_serial(0)                                                                                                                  
     elif keyboard.is_pressed('p'):
         write_serial(1, "DONE.")	
         sleep(1)

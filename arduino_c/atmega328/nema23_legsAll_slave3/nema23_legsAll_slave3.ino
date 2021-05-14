@@ -5,9 +5,9 @@
 #include <FastAccelStepper.h>
 #include <Wire.h>
 
-#define dirPinStepper    2
-#define enablePinStepper 4
-#define stepPinStepper   9  // OC1A in case of AVR
+#define dirPinStepper    25
+#define enablePinStepper 27
+#define stepPinStepper  26  // OC1A in case of AVR
 
 FastAccelStepperEngine engine = FastAccelStepperEngine();
 FastAccelStepper *stepper = NULL;
