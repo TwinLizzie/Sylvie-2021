@@ -105,7 +105,37 @@ void loop(){
         pwm.setPWM(MG996R_1, 0, angleToPulse(130)); 
         delay(150);    
         pwm.setPWM(MG996R_1, 0, angleToPulse(180));
-        break;                       
+        break;  
+      case 14:
+        pwm.setPWM(sg90_1, 0, angleToPulse(180)); 
+        break;  
+      case 15:
+        pwm.setPWM(sg90_1, 0, angleToPulse(0));
+        break;
+      case 16:
+        pwm.setPWM(sg90_2, 0, angleToPulse(180));
+        break;
+      case 17:
+        pwm.setPWM(sg90_2, 0, angleToPulse(0));
+        break;
+      case 18:
+        pwm.setPWM(sg90_3, 0, angleToPulse(180)); 
+        break;
+      case 19:
+        pwm.setPWM(sg90_3, 0, angleToPulse(0)); 
+        break;
+      case 20:
+        pwm.setPWM(sg90_4, 0, angleToPulse(180));
+        break;
+      case 21:
+        pwm.setPWM(sg90_4, 0, angleToPulse(0));
+        break;
+      case 22:
+        pwm.setPWM(sg90_5, 0, angleToPulse(180)); 
+        break;
+      case 23:
+        pwm.setPWM(sg90_5, 0, angleToPulse(0)); 
+        break;                  
       break;
     }  
     //packer.write(x);
