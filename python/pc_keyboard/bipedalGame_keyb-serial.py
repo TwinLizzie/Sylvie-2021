@@ -37,8 +37,8 @@ ee_xR = 0.001
 ee_zL_sr = 0
 ee_zR_sr = 0
 
-ver_speed = [0, 0.1, 0.5, 0.7]
-hor_speed = [0, 0.2, 0.4, 0.6]
+ver_speed = [0, 0.5, 1.5, 2]
+hor_speed = [0, 1, 2, 3]
 sr_speed = [0, 0.025, 0.05, 0.1]
 
 gbx_L1 = 100

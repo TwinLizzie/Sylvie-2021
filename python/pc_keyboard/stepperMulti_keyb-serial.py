@@ -89,7 +89,39 @@ while True:
     elif keyboard.is_pressed('x'): 	
         write_serial(15, "KEYBOARD KEY [X] PRESSED!")
         sleep(0.25)
-        clear_serial(0)                                                                                                                  
+        clear_serial(0)
+    elif keyboard.is_pressed('u'): 	
+        write_serial(16, "KEYBOARD KEY [U] PRESSED!")
+        sleep(0.25)
+        clear_serial(0)  
+    elif keyboard.is_pressed('i'): 	
+        write_serial(17, "KEYBOARD KEY [I] PRESSED!")
+        sleep(0.25)
+        clear_serial(0) 
+    elif keyboard.is_pressed('c'): 	
+        write_serial(18, "KEYBOARD KEY [C] PRESSED!")
+        sleep(0.25)
+        clear_serial(0) 
+    elif keyboard.is_pressed('v'): 	
+        write_serial(19, "KEYBOARD KEY [V] PRESSED!")
+        sleep(0.25)
+        clear_serial(0)    
+    elif keyboard.is_pressed('b'): 	
+        write_serial(20, "KEYBOARD KEY [B] PRESSED!")
+        sleep(0.25)
+        clear_serial(0) 
+    elif keyboard.is_pressed('n'): 	
+        write_serial(21, "KEYBOARD KEY [N] PRESSED!")
+        sleep(0.25)
+        clear_serial(0)
+    elif keyboard.is_pressed('j'): 	
+        write_serial(22, "KEYBOARD KEY [J] PRESSED!")
+        sleep(0.25)
+        clear_serial(0) 
+    elif keyboard.is_pressed('k'): 	
+        write_serial(23, "KEYBOARD KEY [K] PRESSED!")
+        sleep(0.25)
+        clear_serial(0)                                                                                                            
     elif keyboard.is_pressed('p'):
         write_serial(1, "DONE.")	
         sleep(1)
