@@ -127,23 +127,23 @@ void receiveEvent(int byteCount) {
 
 void moveChosenStepper(int numSteps, int stepperChoice){
   if (stepperChoice == 1){
-    stepperElbowX->setSpeedInUs(250);       // the parameter is us/step !!!
-    stepperElbowX->setAcceleration(15000);
+    stepperElbowX->setSpeedInUs(150);       // the parameter is us/step !!!
+    stepperElbowX->setAcceleration(20000);
     stepperElbowX->move(numSteps * formula);  
   }
   else  if (stepperChoice == 2){
-    stepperElbowZ->setSpeedInUs(250);       // the parameter is us/step !!!
-    stepperElbowZ->setAcceleration(15000);
+    stepperElbowZ->setSpeedInUs(150);       // the parameter is us/step !!!
+    stepperElbowZ->setAcceleration(20000);
     stepperElbowZ->move(numSteps * formula2);  
   }
   else  if (stepperChoice == 3){
-    stepperShoulderY->setSpeedInUs(250);       // the parameter is us/step !!!
-    stepperShoulderY->setAcceleration(15000);
+    stepperShoulderY->setSpeedInUs(150);       // the parameter is us/step !!!
+    stepperShoulderY->setAcceleration(20000);
     stepperShoulderY->move(numSteps * formula);  
   }  
   else  if (stepperChoice == 4){
-    stepperShoulderX->setSpeedInUs(250);       // the parameter is us/step !!!
-    stepperShoulderX->setAcceleration(15000);
+    stepperShoulderX->setSpeedInUs(150);       // the parameter is us/step !!!
+    stepperShoulderX->setAcceleration(20000);
     stepperShoulderX->move(numSteps * formula2);  
   }   
 }
