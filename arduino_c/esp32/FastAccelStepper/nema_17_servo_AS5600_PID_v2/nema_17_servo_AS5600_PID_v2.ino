@@ -20,7 +20,7 @@ float encoderValue = 0; // Raw encoder value
 float encoderOutput;
 
 int enableThreshold = 6; // Minimum PID output to move. Higher value stops shaking while idle
-int openSpeed = 250;
+int openSpeed = 200; // Less is more
 bool openLoopRunning = false;
 
 int PPR = 4096;  // Encoder Pulse per revolution.
@@ -135,9 +135,22 @@ void loop(){
       kd = readString.toDouble();   // here input data is store in integer form
       myPID.SetTunings(kp, ki, kd);
       readString=""; // Cleaning User input, ready for new Input  
-    }   
+    } 
+    else if (readString[0] == 's'){
+      readString[0] = '0';
+      Serial.print("New Speed: ");
+      Serial.println(readString.toInt());  //printing the input data in integer form
+      openSpeed = readString.toInt();   // here input data is store in integer form
+      readString=""; // Cleaning User input, ready for new Input  
+    }  
+    else if (readString[0] == 'g'){
+      readString[0] = '0';
+      Serial.print("Getting current position: ");
+      Serial.println(stepperA->getCurrentPosition());  //printing the input data in integer form
+      readString=""; // Cleaning User input, ready for new Input  
+    }          
     else if (readString[0] == 'a'){
-      Serial.print("PID values and Angle: P");
+      Serial.print("PID and Angle: P");
       Serial.print(kp);  //printing the input data in integer form
       Serial.print(", I");      
       Serial.print(ki);  //printing the input data in integer form
@@ -149,6 +162,8 @@ void loop(){
       Serial.print(totalAngle); 
       Serial.print(", Out: ");    
       Serial.print(output);
+      Serial.print(", Speed: ");    
+      Serial.print(openSpeed);      
       Serial.print(", Open: ");
       if(openLoopRunning == true){
         Serial.println("yes");        
@@ -294,7 +309,9 @@ void stepperClosedLoop(int out) {
 }
 
 void stepperOpenLoop(float openSteps){
-  int actualSteps = (openSteps - Last_User_Input) * formula;
+  //int actualSteps_absolute = (openSteps - totalAngle) * formula;
+  int actualSteps_relative = openSteps * formula;
+  int actualAngle = totalAngle * formula;
 
   // Set open loop running flag
   openLoopRunning = true;
@@ -302,11 +319,13 @@ void stepperOpenLoop(float openSteps){
   //Serial.println(actualSteps);
   //Serial.println(formula);
 
+  stepperA->setCurrentPosition(actualAngle);  
+
   // Open loop runs faster than closed loop error correction
   stepperA->setSpeedInUs(openSpeed);
   stepperA->setAcceleration(25000);  
   stepperA->applySpeedAcceleration();
-  stepperA->move(actualSteps);
+  stepperA->moveTo(actualSteps_relative);
   
-  Last_User_Input = openSteps;
+  //Last_User_Input = openSteps;
 }
