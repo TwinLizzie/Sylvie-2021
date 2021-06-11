@@ -8,9 +8,12 @@
 
 FastAccelStepperEngine engine = FastAccelStepperEngine();
 FastAccelStepper *stepperA = NULL;
+
+boolean flagRx = false;
+char readStringC[10]; //This while store the user input data
+int flagIteration = 0;
  
 // PID stuffs
-String readString; //This while store the user input data
 int Raw_Input = 0;
 int User_Input = 0; // This while convert input string into integer
 int Last_User_Input = 0;
@@ -20,7 +23,7 @@ float encoderValue = 0; // Raw encoder value
 float encoderOutput;
 
 int enableThreshold = 6; // Minimum PID output to move. Higher value stops shaking while idle
-long openSpeed = 50; // Less is more
+long openSpeed = 10; // Less is more
 long openAccel = 400000;
 bool openLoopRunning = false;
 
@@ -77,128 +80,6 @@ void setup(){
     stepperA->setSpeedInHz(2000);       // the parameter is us/step !!!
     stepperA->setAcceleration(openAccel);
   }    
-}
-
-void serialEvent() {
-  while (Serial.available()) {
-    // get the new byte:
-    char inChar = (char)Serial.read();
-    // add it to the inputString:
-    inputString += inChar;
-    // if the incoming character is a newline, set a flag so the main loop can
-    // do something about it:
-    if (inChar == '\n') {
-      stringComplete = true;
-    }
-  }
-}
-
-void loop(){    
-  ReadRawAngle(); //ask the value from the sensor
-  correctAngle(); //tare the value
-  checkQuadrant(); //check quadrant, check rotations, check absolute angular position
-
-  while (Serial.available() > 0) { //Check if the serial data is available.
-    delay(5);
-    char c = Serial.read();  // storing input data
-    readString += c;         // accumulate each of the characters in readString
-  }
- 
-  if (readString.length() > 0) { //Verify that the variable contains information 
-    if (readString[0] == 'm'){
-      readString[0] = '0';
-
-      //Check for negative numbers
-      if(readString[1] == '-'){
-        readString[1] = '0';
-        Raw_Input = readString.toInt();   // here input data is store in integer form
-        User_Input = -Raw_Input; 
-      }else{
-        User_Input = readString.toInt();   // here input data is store in integer form        
-      }
-      //Apply Gear Reduction
-      User_Input = User_Input * gearReduction;
-      
-      //Print actual angle value     
-      Serial.print("New position: ");
-      Serial.println(User_Input);  //printing the input data in integer form
-      readString=""; // Cleaning User input, ready for new Input  
-      stepperOpenLoop(User_Input);
-    }
-    else if (readString[0] == 'p'){
-      readString[0] = '0';
-      Serial.print("New kP: ");
-      Serial.println(readString.toDouble());  //printing the input data in integer form
-      kp = readString.toDouble();   // here input data is store in integer form
-      myPID.SetTunings(kp, ki, kd);
-      readString=""; // Cleaning User input, ready for new Input  
-    }
-    else if (readString[0] == 'i'){
-      readString[0] = '0';
-      Serial.print("New kI: ");
-      Serial.println(readString.toDouble());  //printing the input data in integer form
-      ki = readString.toDouble();   // here input data is store in integer form
-      myPID.SetTunings(kp, ki, kd);
-      readString=""; // Cleaning User input, ready for new Input  
-    }
-    else if (readString[0] == 'd'){
-      readString[0] = '0';
-      Serial.print("New kD: ");
-      Serial.println(readString.toDouble());  //printing the input data in integer form
-      kd = readString.toDouble();   // here input data is store in integer form
-      myPID.SetTunings(kp, ki, kd);
-      readString=""; // Cleaning User input, ready for new Input  
-    } 
-    else if (readString[0] == 's'){
-      readString[0] = '0';
-      Serial.print("New Speed: ");
-      Serial.println(readString.toInt());  //printing the input data in integer form
-      openSpeed = readString.toInt();   // here input data is store in integer form
-      readString=""; // Cleaning User input, ready for new Input  
-    }  
-    else if (readString[0] == 'g'){
-      readString[0] = '0';
-      Serial.print("Getting current position: ");
-      Serial.println(stepperA->getCurrentPosition());  //printing the input data in integer form
-      readString=""; // Cleaning User input, ready for new Input  
-    }          
-    else if (readString[0] == 'a'){
-      Serial.print("PID and Angle: P");
-      Serial.print(kp);  //printing the input data in integer form
-      Serial.print(", I");      
-      Serial.print(ki);  //printing the input data in integer form
-      Serial.print(", D");        
-      Serial.print(kd);  //printing the input data in integer form
-      Serial.print(", M");    
-      Serial.print(User_Input);     
-      Serial.print(", Enc: ");    
-      Serial.print(totalAngle); 
-      Serial.print(", Out: ");    
-      Serial.print(output);
-      Serial.print(", Speed: ");    
-      Serial.print(openSpeed);      
-      Serial.print(", Open: ");
-      if(openLoopRunning == true){
-        Serial.println("yes");        
-      }else{
-        Serial.println("no");      
-      }
-      readString=""; // Cleaning User input, ready for new Input                              
-    }           
-  }
-
-  //Check if stepper is running to switch open loop to closed loop
-  if(stepperA->isRunning() == false){
-    openLoopRunning = false;  
-  }
-
-  // Switch to closed loop
-  if(openLoopRunning == false){
-    setpoint = User_Input;                    //PID while work to achive this value consider as SET value
-    input = totalAngle;           // data from encoder consider as a Process value
-    myPID.Compute();                 // calculate new output    
-    stepperClosedLoop(output);  
-  } 
 }
 
 void ReadRawAngle(){ 
@@ -341,4 +222,57 @@ void stepperOpenLoop(float openSteps){
   stepperA->moveTo(actualSteps_relative);
   
   //Last_User_Input = openSteps;
+}
+
+void loop(){    
+  ReadRawAngle(); //ask the value from the sensor
+  correctAngle(); //tare the value
+  checkQuadrant(); //check quadrant, check rotations, check absolute angular position
+
+  if(Serial.available() > 0) { //Check if the serial data is available.
+    readStringC[flagIteration] = Serial.read();  // storing input data
+    if(readStringC[flagIteration] == '\n'){
+      readStringC[flagIteration] = '\0';
+      flagRx = true;
+    }else{
+      flagIteration++;
+    }
+  }
+ 
+  if (flagRx == true) { //Verify that the variable contains information 
+    if (readStringC[0] == 'm'){
+      readStringC[0] = '0';
+
+      //Check for negative numbers
+      if(readStringC[1] == '-'){
+        readStringC[1] = '0';
+        Raw_Input = atoi(readStringC);   // here input data is store in integer form
+        User_Input = -Raw_Input; 
+      }else{
+        User_Input = atoi(readStringC);   // here input data is store in integer form   
+      }
+      //Apply Gear Reduction
+      User_Input = User_Input * gearReduction;
+      
+      //Print actual angle value     
+      //Serial.print("New position: ");
+      //Serial.println(User_Input);  //printing the input data in integer form
+      flagRx = false;
+      flagIteration = 0;
+      stepperOpenLoop(User_Input);
+    }
+  }
+
+  //Check if stepper is running to switch open loop to closed loop
+  if(stepperA->isRunning() == false){
+    openLoopRunning = false;  
+  }
+
+  // Switch to closed loop
+  if(openLoopRunning == false){
+    setpoint = User_Input;                    //PID while work to achive this value consider as SET value
+    input = totalAngle;           // data from encoder consider as a Process value
+    myPID.Compute();                 // calculate new output    
+    stepperClosedLoop(output);  
+  } 
 }
