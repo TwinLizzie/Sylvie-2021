@@ -23,9 +23,8 @@ FastAccelStepper *stepperA = NULL;
 #include <PID_v1.h>
 
 // Wire character read stuffs
-int Raw_Input = 0;
-int User_Input = 0; // This while convert input string into integer
-int potValue = 0;
+float Raw_Input = 0;
+float User_Input = 0; // This while convert input string into integer
 
 boolean flagRx = false;
 char readStringC[10]; //This while store the user input data
@@ -34,55 +33,54 @@ char readStringC[10]; //This while store the user input data
 double kp = 6 , ki = 5 , kd = 0.01;
 //double new_kp, new_ki, new_kd;
 double input = 0, output = 0, setpoint = 0;
-PID myPID(&input, &output, &setpoint, kp, ki, kd, DIRECT); 
+PID myPID(&input, &output, &setpoint, kp, ki, kd, DIRECT);
 
 // Motor and driver speed stuffs
 long closedSpeed = 20;
 long openSpeed = 10; // Less is more
 long openAccel = 400000;
-int enableThreshold = 6;
+int enableThreshold = 1;
 
 bool openLoopRunning = false;
 bool closedLoopRunning = true;
 
+bool closedLoopStart = true;
+
 // Encoder stuffs
+int quadrantNumber, previousQuadrantNumber;
+bool quadrantClockwise = true;
 long revolutions = 0;   // number of revolutions the encoder has made
+
 double encoderPosition = 0;    // the calculated value the encoder is at
-double totalAngle;
-double encoderOutput;          // raw value from AS5600
-double firstEncoderOutput;
-long lastEncoderOutput;        // last output from AS5600
+double totalAngle, startAngle;
+double previousTotalAngle;
 
 // Stepper driver settings and gearboxes (if any)
-float stepsPerRev = 200.0;
+float stepsPerRev = 200.00;
 int microstepping = 32;
-float formula = ((stepsPerRev * microstepping) / 360);
+float formula = ((stepsPerRev * microstepping) / 360.00);
 float gearReduction = 66.461538462; //EMC2 Gen 2 Gearbox
 
 long driverCurrent = 1000;
 
-//Refresh rate of the encoder
-unsigned long previousMillis = 0;        // will store last time LED was updated
-const long interval = 200;           // interval at which to blink (milliseconds)
-
 void setup() {
   Serial.begin(115200);
   SPI.begin();
-  
+
   bool success = WireSlave.begin(SDA_PIN, SCL_PIN, I2C_SLAVE_ADDR);
   if (!success) {
     Serial.println("I2C slave init failed");
-    while(1) delay(100);
+    while (1) delay(100);
   }
   else {
-    Serial.println("I2C slave init success!"); 
+    Serial.println("I2C slave init success!");
   }
   WireSlave.onReceive(receiveEvent);
 
   myPID.SetMode(AUTOMATIC);   //set PID in Auto mode
   myPID.SetSampleTime(1);  // refresh rate of PID controller
   myPID.SetOutputLimits(-500, 500); // this is the MAX PWM value to move motor, here change in value reflect change in speed of motor.
-  
+
   engine.init();
   stepperA = engine.stepperConnectToPin(STEP_PIN);
   if (stepperA) {
@@ -101,61 +99,112 @@ void setup() {
   driver.microsteps(microstepping);
   driver.shaft(true);
 
-  firstEncoderOutput = analogRead(ANALOG_PIN);
-  encoderOutput = firstEncoderOutput;
-  lastEncoderOutput = firstEncoderOutput;
-  encoderPosition = firstEncoderOutput;
+  startAngle = degAngle(); //update startAngle with degAngle - for taring
+}
+
+double degAngle(){ 
+  double rawAngle = analogRead(ANALOG_PIN);
+  return rawAngle * 0.087890625;
+}
+
+double taredAngle(){
+  double correctedAngle = degAngle() - startAngle; //this tares the position
+
+  if(correctedAngle < 0){ //if the calculated angle is negative, we need to "normalize" it
+    correctedAngle = correctedAngle + 360.00; //correction for negative numbers (i.e. -15 becomes +345)
+  }
+
+  return correctedAngle;
 }
 
 void getEncoderReading() {
-  encoderOutput = analogRead(ANALOG_PIN);           // get the raw value of the encoder                      
-  
-  if ((lastEncoderOutput - encoderOutput) > 2047 )        // check if a full rotation has been made
-    revolutions++;
-  else if ((lastEncoderOutput - encoderOutput) < -2047 )
-    revolutions--;
-    
-  encoderPosition = (revolutions * 4096 + encoderOutput) - firstEncoderOutput;   // calculate the position the the encoder is at based off of the number of revolutions
-  totalAngle = (encoderPosition * (360.0 / 4096.0)); // The Value that Matters
-  
+  double correctAngle = taredAngle(); //tare the value
+  double encoderVal = degAngle();
+
+  if(correctAngle >= 0 && correctAngle <=90){
+    quadrantNumber = 1;
+  }
+  else if(correctAngle > 90 && correctAngle <=180){
+    quadrantNumber = 2;
+  }
+  else if(correctAngle > 180 && correctAngle <=270){
+    quadrantNumber = 3;
+  }
+  else if(correctAngle > 270 && correctAngle <360){
+    quadrantNumber = 4;
+  }
+
+  if(quadrantNumber != previousQuadrantNumber){ //if we changed quadrant
+    if(quadrantNumber == 1 && previousQuadrantNumber == 4){
+      revolutions++; // 4 --> 1 transition: CW rotation
+      quadrantClockwise = true;
+    }
+    else if(quadrantNumber == 4 && previousQuadrantNumber == 1){
+      revolutions--; // 1 --> 4 transition: CCW rotation      
+      quadrantClockwise = false;
+    }
+    previousQuadrantNumber = quadrantNumber;  //update to the current quadrant
+  }
+  totalAngle = (revolutions * 360.00) + correctAngle;
   //Serial.println(totalAngle);
-  
-  lastEncoderOutput = encoderOutput;   
+
+  // Check for missing rotations! And correct them accordingly...
+  // Protip: You can help prevent missed encoder readings by using a decoupling capacitor.
+  // Place a decoupling capacitor (104 ceramic) between analog out pin and ground.  
+  if(abs(totalAngle - previousTotalAngle) > 359.00 ){
+    Serial.println("Warning! Missed revolution! Details: ");
+    Serial.println(previousTotalAngle);
+    Serial.println(totalAngle);
+    if(quadrantClockwise == true){
+      revolutions--;
+    }else{
+      revolutions++;
+    }
+    totalAngle = (revolutions * 360.00) + correctAngle;
+  }
+  previousTotalAngle = totalAngle;
 }
 
 
-void stepperClosedLoop(int out) {                              
-  if (abs(out) < enableThreshold){
-    stepperA->stopMove(); 
+void stepperClosedLoop(int out) {
+  if (closedLoopStart == true){
+    //Serial.println(User_Input);
+    //Serial.println(totalAngle);
+    closedLoopStart = false;
+  }
+  
+  if (abs(out) < enableThreshold) {
+    stepperA->stopMove();
     closedLoopRunning = false;
-  }else{
+  } else {
     if (out > 0) {
       int newSpeed = map(abs(out), 0, 500, 1000, closedSpeed);
       stepperA->setSpeedInUs(newSpeed);
-      stepperA->applySpeedAcceleration();   
+      stepperA->applySpeedAcceleration();
       stepperA->runForward();
     }
     else if (out < 0) {
-      int newSpeed = map(abs(out), 0, 500, 1000, closedSpeed);      
+      int newSpeed = map(abs(out), 0, 500, 1000, closedSpeed);
       stepperA->setSpeedInUs(newSpeed);
-      stepperA->applySpeedAcceleration();    
+      stepperA->applySpeedAcceleration();
       stepperA->runBackward();
-    }  
+    }
   }
 }
 
-void stepperOpenLoop(float openSteps){
+void stepperOpenLoop(float openSteps) {
   int actualSteps_relative = openSteps * formula;
   int actualAngle = totalAngle * formula;
 
   openLoopRunning = true;
   closedLoopRunning = true;
+  closedLoopStart = true;
 
-  stepperA->setCurrentPosition(actualAngle);  
+  stepperA->setCurrentPosition(actualAngle);
 
   // Open loop runs faster than closed loop error correction
   stepperA->setSpeedInUs(openSpeed);
-  stepperA->setAcceleration(openAccel);  
+  stepperA->setAcceleration(openAccel);
   stepperA->applySpeedAcceleration();
   stepperA->moveTo(actualSteps_relative);
 }
@@ -173,50 +222,50 @@ void receiveEvent(int byteCount) {
 void loop() {
   WireSlave.update();
   getEncoderReading();
- 
-  if (flagRx == true) { //Verify that the variable contains information 
-    if (readStringC[0] == 'm'){
+
+  if (flagRx == true) { //Verify that the variable contains information
+    if (readStringC[0] == 'm') {
       readStringC[0] = '0';
 
       //Check for negative numbers
-      if(readStringC[1] == '-'){
+      if (readStringC[1] == '-') {
         readStringC[1] = '0';
-        Raw_Input = atoi(readStringC);   // here input data is store in integer form
-        User_Input = -Raw_Input; 
-      }else{
-        User_Input = atoi(readStringC);   // here input data is store in integer form   
+        Raw_Input = atof(readStringC);   // here input data is store in integer form
+        User_Input = -Raw_Input;
+      } else {
+        User_Input = atof(readStringC);   // here input data is store in integer form
       }
       //Apply Gear Reduction
-      int Display_Input = User_Input;
+      float Display_Input = User_Input;
       User_Input = User_Input * gearReduction;
-      
-      //Print actual angle value          
+
+      //Print actual angle value
       stepperOpenLoop(User_Input);
     }
-    else if (readStringC[0] == 's'){
+    else if (readStringC[0] == 's') {
       readStringC[0] = '0';
-      openSpeed = atoi(readStringC); 
+      openSpeed = atoi(readStringC);
     }
-    else if (readStringC[0] == 'c'){
+    else if (readStringC[0] == 'c') {
       readStringC[0] = '0';
-      if(atoi(readStringC) <= 1200){
+      if (atoi(readStringC) <= 1200) {
         driverCurrent = atoi(readStringC);
-        driver.rms_current(driverCurrent); 
+        driver.rms_current(driverCurrent);
       }
     }
     flagRx = false;
   }
 
-  if (stepperA->isRunning() == false){
-    openLoopRunning = false;  
+  if (stepperA->isRunning() == false) {
+    openLoopRunning = false;
   }
 
-  if(openLoopRunning == false){
-    if(closedLoopRunning == true){
+  if (openLoopRunning == false) {
+    if (closedLoopRunning == true) {
       setpoint = User_Input;                    //PID while work to achive this value consider as SET value
       input = totalAngle;           // data from encoder consider as a Process value
-      myPID.Compute();                 // calculate new output       
-      stepperClosedLoop(output);    
-    }       
+      myPID.Compute();                 // calculate new output
+      stepperClosedLoop(output);
+    }
   }
 }
