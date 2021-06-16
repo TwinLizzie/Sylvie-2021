@@ -71,6 +71,7 @@ void loop(){
      else if(message[0] == 's'){
        message[0] = '0';
        int newSpeed = atoi(message);
+       currentSpeed = newSpeed;
        Serial.print("New speed: ");
        Serial.println(currentSpeed);       
      }

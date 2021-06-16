@@ -104,7 +104,7 @@ void setup() {
 
 double degAngle(){ 
   double rawAngle = analogRead(ANALOG_PIN);
-  return rawAngle * 0.087890625;
+  return rawAngle * (360.00 / 4096.00);
 }
 
 double taredAngle(){
@@ -149,9 +149,7 @@ void getEncoderReading() {
   //Serial.println(totalAngle);
 
   // Check for missing rotations! And correct them accordingly...
-  // Protip: You can help prevent missed encoder readings by using a decoupling capacitor.
-  // Place a decoupling capacitor (104 ceramic) between analog out pin and ground.  
-  if(abs(totalAngle - previousTotalAngle) > 359.00 ){
+  if(abs(totalAngle - previousTotalAngle) > 350.00 ){
     Serial.println("Warning! Missed revolution! Details: ");
     Serial.println(previousTotalAngle);
     Serial.println(totalAngle);
@@ -168,8 +166,8 @@ void getEncoderReading() {
 
 void stepperClosedLoop(int out) {
   if (closedLoopStart == true){
-    //Serial.println(User_Input);
-    //Serial.println(totalAngle);
+    Serial.println(User_Input);
+    Serial.println(totalAngle);
     closedLoopStart = false;
   }
   
